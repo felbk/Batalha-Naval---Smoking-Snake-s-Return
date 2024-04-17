@@ -1,0 +1,1 @@
+from Basededados import * #Importa variaveis fixas da base de dados
