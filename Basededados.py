@@ -48,7 +48,7 @@ PAISES =  {
 }
 verificaPais= {
     'Rússia': ['RUSSIA','RÚSSIA'] , 
-    'Brasil' : ['Brasil'] ,
+    'Brasil' : ['BRASIL'] ,
       'Japão': ['JAPAO','JAPÃO'],
       'Austrália': ['AUSTRALIA','AUSTRÁLIA'],
       'França' : ['FRANCA','FRANÇA']

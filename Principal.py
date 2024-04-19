@@ -14,19 +14,20 @@ while play:
 
     # Cpu escolhe pais e aloca frotas - A FAZER
 
+    cpu = 'Rússia' # definição provisória manual da cpu
 
     # Texto de carregamento
     time.sleep(1)
     print('\nIniciando jogo\n ')
     time.sleep(0.8)
-    print('{} está alocando seus navios para a batalha'.format('Brasil'),end='')
+    print('{} está alocando seus navios para a batalha'.format(cpu),end='')
     time.sleep(0.8)
     for i in range(2):
         print('.',end='')
         time.sleep(1)
     print('.\n ')
     time.sleep(2)
-    colorir('green','!! {} JÁ ESTÁ PRONTO PARA A BATALHA !!\n '.format("BRASIL"))
+    colorir('green','!! {} JÁ ESTÁ PRONTO PARA A BATALHA !!\n '.format(cpu))
 
     #Jogador escolhe País - A FAZER
     time.sleep(0.5)
@@ -48,6 +49,7 @@ while play:
         paisIn = input("")
     time.sleep(0.5)
     colorir('cyan','\n Você escolheu {}, hora de alocar seus navios!! \n'.format(formatarPais(paisIn)))
+    player = formatarPais(paisIn)
 
 
 
