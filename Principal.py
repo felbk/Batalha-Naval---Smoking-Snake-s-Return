@@ -40,7 +40,14 @@ while play:
             colorir('black',"     "+inf2+': '+str(val2))
             time.sleep(0.3)
     print("\n ")
+    #Escolha do país
     paisIn = input("Escolha seu país: ")
+    #Validação do país
+    while verificarPais(paisIn)==False :  
+        colorir('red','O valor inserido não está na lista de países, tente novamente:')
+        paisIn = input("")
+    time.sleep(0.5)
+    colorir('cyan','\n Você escolheu {}, hora de alocar seus navios!! \n'.format(formatarPais(paisIn)))
 
 
 

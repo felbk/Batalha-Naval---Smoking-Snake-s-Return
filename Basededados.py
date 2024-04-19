@@ -46,7 +46,13 @@ PAISES =  {
         'submarino': 1
     }
 }
-paisesnomesaceitos = [ 'BRASIL', 'RUSSIA' ,'RÚSSIA', 'FRANCA','FRANÇA','JAPAO','JAPÃO','AUSTRÁLIA','AUSTRALIA']
+verificaPais= {
+    'Rússia': ['RUSSIA','RÚSSIA'] , 
+    'Brasil' : ['Brasil'] ,
+      'Japão': ['JAPAO','JAPÃO'],
+      'Austrália': ['AUSTRALIA','AUSTRÁLIA'],
+      'França' : ['FRANCA','FRANÇA']
+}
 
 # alfabeto para montar o nome das colunas
 ALFABETO = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
