@@ -24,7 +24,9 @@ def sorteia_ataque():
     
 def registra_ataque():
     return
-
+def colorir(cor,texto):
+    print('{0}{1}{2}'.format(CORES[cor],texto,CORES['reset']))
+    return
  
 
 
