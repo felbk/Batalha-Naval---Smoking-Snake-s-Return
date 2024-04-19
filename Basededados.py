@@ -47,6 +47,7 @@ PAISES =  {
     }
 }
 
+
 # alfabeto para montar o nome das colunas
 ALFABETO = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 

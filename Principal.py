@@ -29,6 +29,19 @@ while play:
 
     #Jogador escolhe País - A FAZER
 
+    colorir("yellow","\n|Analisando as Frotas disponíveis pelo mundo|\n ")
+    time.sleep(0.5)
+         #printa Tabela de paises
+    for inf,val in PAISES.items():
+        colorir('cyan',inf+':')
+        time.sleep(0.2)
+        for inf2 , val2 in val.items():
+            colorir('black',"     "+inf2+': '+str(val2))
+            time.sleep(0.3)
+    print("\n ")
+    paisIn = input("Escolha seu país: ")
+
+
 
     #Cria e exibe mapa - A FAZER
 
