@@ -27,5 +27,10 @@ while play:
     time.sleep(0.5)
     colorir('green','!! A BATALHA COMEÇOU !!\n ')
 
+    #Jogador escolhe País - A FAZER
+
+
+    #Cria e exibe mapa - A FAZER
+
     play = False
     
