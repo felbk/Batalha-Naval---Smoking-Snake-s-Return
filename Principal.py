@@ -19,7 +19,9 @@ while play:
     # Texto de carregamento
     time.sleep(1)
     print('\nIniciando jogo\n ')
-    time.sleep(0.8)
+    time.sleep(0.4)
+    print('\nSeu oponente será: {}\n '.format(cpu))
+    time.sleep(0.4)
     print('{} está alocando seus navios para a batalha'.format(cpu),end='')
     time.sleep(0.8)
     for i in range(2):
@@ -27,7 +29,7 @@ while play:
         time.sleep(1)
     print('.\n ')
     time.sleep(2)
-    colorir('green','!! {} JÁ ESTÁ PRONTO PARA A BATALHA !!\n '.format(cpu))
+    colorir('green','!! {} JÁ ESTÁ NO CAMPO DE BATALHA !!\n '.format(cpu.upper()))
 
     #Jogador escolhe País - A FAZER
     time.sleep(0.5)
