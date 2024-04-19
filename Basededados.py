@@ -46,7 +46,7 @@ PAISES =  {
         'submarino': 1
     }
 }
-
+paisesnomesaceitos = [ 'BRASIL', 'RUSSIA' ,'RÚSSIA', 'FRANCA','FRANÇA','JAPAO','JAPÃO','AUSTRÁLIA','AUSTRALIA']
 
 # alfabeto para montar o nome das colunas
 ALFABETO = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
