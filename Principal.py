@@ -16,16 +16,16 @@ while play:
 
 
     # Texto de carregamento
-    print('Iniciando jogo')
+    print('\nIniciando jogo\n ')
     time.sleep(0.3)
     print('{} está alocando seus navios para a batalha'.format('Brasil'),end='')
     time.sleep(0.6)
     for i in range(2):
         print('.',end='')
         time.sleep(0.7)
-    print('.')
+    print('.\n ')
     time.sleep(0.5)
-    colorir('green','!! A BATALHA COMEÇOU !!')
+    colorir('green','!! A BATALHA COMEÇOU !!\n ')
 
     play = False
     
