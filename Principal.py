@@ -9,28 +9,29 @@ while play:
     
     #cabeçalho de inicio
     tituloinicio= "!!!!!Batalha Naval - Smoking Snake's Return!!!!!"
-    tituloinicio= "="*len(tituloinicio)+'\n'+tituloinicio + "\n"+'='*len(tituloinicio)
-    colorir("green",tituloinicio)
+    tituloinicio= "="*len(tituloinicio)+'\n'+tituloinicio + "\n"+'_'*len(tituloinicio)
+    colorir("green","\n \n"+tituloinicio + "\n")
 
     # Cpu escolhe pais e aloca frotas - A FAZER
 
 
     # Texto de carregamento
+    time.sleep(1)
     print('\nIniciando jogo\n ')
-    time.sleep(0.3)
+    time.sleep(0.8)
     print('{} está alocando seus navios para a batalha'.format('Brasil'),end='')
-    time.sleep(0.6)
+    time.sleep(0.8)
     for i in range(2):
         print('.',end='')
-        time.sleep(0.7)
+        time.sleep(1)
     print('.\n ')
-    time.sleep(0.5)
-    colorir('green','!! A BATALHA COMEÇOU !!\n ')
+    time.sleep(2)
+    colorir('green','!! {} JÁ ESTÁ PRONTO PARA A BATALHA !!\n '.format("BRASIL"))
 
     #Jogador escolhe País - A FAZER
-
-    colorir("yellow","\n|Analisando as Frotas disponíveis pelo mundo|\n ")
     time.sleep(0.5)
+    colorir("yellow","\n|Analisando as Frotas disponíveis pelo mundo|\n ")
+    time.sleep(1.5)
          #printa Tabela de paises
     for inf,val in PAISES.items():
         colorir('cyan',inf+':')
