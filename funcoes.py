@@ -1,7 +1,7 @@
 #funções para facilitar a organização
-from Basededados import CORES
+from Basededados import*
 
-'''def cria_mapa():
+def cria_mapa():
     return
     
 def aloca_navio():
@@ -23,9 +23,15 @@ def sorteia_ataque():
     return
     
 def registra_ataque():
-    return'''
-
-def printaClr(texto,cor):  #Coloridor de string
-    print(CORES[cor]+texto+CORES["reset"])
     return
+
+ 
+
+
+
+    
+
+
+    
+
     
