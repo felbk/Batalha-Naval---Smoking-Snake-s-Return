@@ -54,6 +54,14 @@ verificaPais= {
       'França' : ['FRANCA','FRANÇA']
 }
 
+frase_de_efeito={
+    'Brasil': 'Hoje a cobra vai fumar!!' ,
+    'Rússia': 'Vamos acabar logo com isso, a Vodka nos espera em casa!!' ,
+    'Austrália': '' ,
+    'França': '' ,
+    'Japão': '' 
+}
+
 # alfabeto para montar o nome das colunas
 ALFABETO = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
