@@ -1,8 +1,19 @@
 #funções para facilitar a organização
 from Basededados import*
 
-def cria_mapa():
-    return
+def cria_mapa(N):
+    mapa = []
+    linha = []
+    meio = ''
+    i =0
+    j=0
+    while j<N:
+        linha.append(meio)
+        j+=1
+    while i<N:
+        mapa.append(linha)
+        i+=1
+    return mapa
     
 def aloca_navio():
     return
