@@ -4,7 +4,7 @@ from Basededados import*
 def cria_mapa(N):
     mapa = []
     linha = []
-    meio = ''
+    meio = ' '
     i =0
     j=0
     while j<N:
