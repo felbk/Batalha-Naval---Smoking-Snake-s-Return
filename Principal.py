@@ -30,7 +30,9 @@ while play:
     print('.\n ')
     time.sleep(2)
     colorir('green','!! {} JÁ ESTÁ NO CAMPO DE BATALHA !!\n '.format(cpu.upper()))
+    time.sleep(0.5)
     colorir("green",frase_de_efeito[cpu])
+    time.sleep(1.5)
 
     #Jogador escolhe País - A FAZER
     time.sleep(0.5)
