@@ -21,8 +21,12 @@ def aloca_navio():
 def aloca_se_possivel():
     return
     
-def foi_derrotado():
-    return
+def foi_derrotado(matriz):
+    for linha in matriz:
+        for i in linha:
+            if i == 'N':
+                return False
+    return True
     
 def sorteia_cpu():
     return
