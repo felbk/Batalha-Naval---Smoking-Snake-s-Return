@@ -17,7 +17,10 @@ def cria_mapa(N):
         i+=1
     return mapa
     
-def aloca_navio():
+def aloca_navio(letra,num,orine):
+    for letra in range(len(cria_mapa(10))):
+
+
     return
     
 def aloca_se_possivel():
