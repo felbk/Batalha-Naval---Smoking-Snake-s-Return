@@ -92,7 +92,7 @@ def formatarPais(texto):
         
     
 
-situacao_celula('N','cpu')
+situacao_celula('A','cpu')
 
 
 
