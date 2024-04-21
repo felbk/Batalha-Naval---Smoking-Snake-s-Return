@@ -2,7 +2,7 @@
 from Basededados import*
 from random import *
 
-
+#Cria tabuleiro do jogo
 def cria_mapa(N):
     mapa = []
     linha = []
@@ -16,20 +16,22 @@ def cria_mapa(N):
         mapa.append(linha)
         i+=1
     return mapa
-    
+ 
 def aloca_navio(letra,num,orine):
     return
     
 def aloca_se_possivel():
     return
-    
+
+#Verifica se algum jogador foi derrotado   
 def foi_derrotado(matriz):
     for linha in matriz:
         for i in linha:
             if i == 'N':
                 return False
     return True
-    
+
+#Sorteia o paia da CPU 
 def sorteia_cpu(dici):
     listp =[]
     for pais in dici:
@@ -46,6 +48,7 @@ def sorteia_ataque():
 def registra_ataque():
     return
 
+#Verifica situação da celular da cpu e jogador
 def situacao_celula(elem,jogador):
     if jogador == 'cpu':
         if elem == ' ':
@@ -78,6 +81,7 @@ def verificarPais(texto):
             return True
     return False
 
+#Verifica se há letra no tabuleiro
 def verifica_letracord(letra):
     if letra.upper() in NUM_LETRA:
         return True
