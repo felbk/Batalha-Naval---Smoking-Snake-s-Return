@@ -1,5 +1,7 @@
 #funções para facilitar a organização
 from Basededados import*
+from random import *
+
 
 def cria_mapa(N):
     mapa = []
@@ -28,8 +30,12 @@ def foi_derrotado(matriz):
                 return False
     return True
     
-def sorteia_cpu():
-    return
+def sorteia_cpu(dici):
+    listp =[]
+    for pais in dici:
+        listp.append(pais)
+    return choice(listp)
+
     
 def valida_entradas():
     return
@@ -56,6 +62,8 @@ def formatarPais(texto):
     for pais,lista in verificaPais.items():
         if texto in lista:
             return pais
+        
+    
 
 
 

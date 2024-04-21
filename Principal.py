@@ -1,6 +1,7 @@
 
 from Basededados import* #Importa variaveis fixas da base de dados
 from funcoes import *
+
 import time
 play = True
 
@@ -12,9 +13,9 @@ while play:
     tituloinicio= "="*len(tituloinicio)+'\n'+tituloinicio + "\n"+'_'*len(tituloinicio)
     colorir("green","\n \n"+tituloinicio + "\n")
 
-    # Cpu escolhe pais e aloca frotas - A FAZER
+    # Cpu escolhe pais e aloca frotas -A FAZER
 
-    cpu = 'Rússia' # definição provisória manual da cpu
+    cpu = sorteia_cpu(PAISES) # definição provisória manual da cpu
 
     # Texto de carregamento
     time.sleep(1)
@@ -34,7 +35,7 @@ while play:
     colorir("green",frase_de_efeito[cpu])
     time.sleep(1.5)
 
-    #Jogador escolhe País - A FAZER
+    #Jogador escolhe País 
     time.sleep(0.5)
     colorir("yellow","\n|Analisando as Frotas disponíveis pelo mundo|\n ")
     time.sleep(1.5)
@@ -55,10 +56,11 @@ while play:
     time.sleep(0.5)
     colorir('cyan','\n Você escolheu {}, hora de alocar seus navios!! \n'.format(formatarPais(paisIn)))
     player = formatarPais(paisIn)
+    #Cria e exibe mapa 
+    mapa_player = cria_mapa(10)
+    mapa_cpu = cria_mapa(10)
 
-
-
-    #Cria e exibe mapa - A FAZER
+    #Alocar nacios - A FAZER 
 
     play = False
     
