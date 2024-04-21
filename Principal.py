@@ -10,11 +10,11 @@ while play:
     
     #cabeçalho de inicio
     tituloinicio= "!!!!!Batalha Naval - Smoking Snake's Return!!!!!"
-    tituloinicio= "="*len(tituloinicio)+'\n'+tituloinicio + "\n"+'_'*len(tituloinicio)
     colorir("green","\n \n"+tituloinicio + "\n")
 
     # Cpu escolhe pais e aloca frotas -A FAZER
 
+    tituloinicio= "="*len(tituloinicio)+'\n'+tituloinicio + "\n"+'='*len(tituloinicio)
     cpu = sorteia_cpu(PAISES) # definição provisória manual da cpu
 
     # Texto de carregamento
@@ -58,8 +58,8 @@ while play:
     player = formatarPais(paisIn)
     #Cria e exibe mapa 
     mapa_player = cria_mapa(10)
-    mapa_cpu = cria_mapa(10)
 
+    mapa_cpu = cria_mapa(10) 
     #Alocar nacios - A FAZER 
 
     play = False
