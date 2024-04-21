@@ -53,18 +53,18 @@ def situacao_celula(elem,jogador):
         elif elem == 'N':
             print(' ',end="")
         elif elem == 'A':
-            print('{0}█',end="".format(CORES['blue']))
+            print('{0}█'.format(CORES['blue']),end="")
         elif elem == 'D':
-            print('{0}█',end="".format(CORES['red']))
+            print('{0}█'.format(CORES['red']),end="")
     else:
         if elem == ' ':
             print(' ',end="")
         elif elem == 'N':
-            print('{0}█',end="".format(CORES['green']))
+            print('{0}█'.format(CORES['green']),end="")
         elif elem == 'A':
-            print('{0}█',end="".format(CORES['blue']))
+            print('{0}█'.format(CORES['blue']),end="")
         elif elem == 'D':
-            print('{0}█',end="".format(CORES['red']))
+            print('{0}█'.format(CORES['red']),end="")
     return 
 #Printa uma string colorida
 def colorir(cor,texto):
