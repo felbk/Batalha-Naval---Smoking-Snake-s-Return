@@ -59,6 +59,12 @@ def verificarPais(texto):
         if texto in lista:
             return True
     return False
+def verifica_letracord(letra):
+    if letra.upper in NUM_LETRA:
+        return True
+    else:
+        return False
+
 #Nome formatado corretamente
 def formatarPais(texto):
     texto= texto.strip().upper()

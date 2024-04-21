@@ -59,7 +59,7 @@ frase_de_efeito={
     'Rússia': 'Vamos acabar logo com isso, a Vodka nos espera em casa!!' ,
     'Austrália': '' ,
     'França': '' ,
-    'Japão': '' 
+    'Japão': 'Trema ao ver os navios surgirem ao sol nascente!!' 
 }
 
 # alfabeto para montar o nome das colunas
