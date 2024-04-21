@@ -96,6 +96,7 @@ def formatarPais(texto):
         
     
 
+situacao_celula('N','cpu')
 
 
 
