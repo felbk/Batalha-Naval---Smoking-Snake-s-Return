@@ -48,9 +48,24 @@ def sorteia_ataque():
 def registra_ataque(let,num,mapa):
     let = NUM_LETRA[let.upper()]-1
     num = num-1
-    if mapa[num][let] == ' ':
-        mapa[num][let] = "A"
-    return mapa
+    saida=[]
+    for nlinha in range(len(mapa)):
+        linhasaida= []
+        linha_em_analise= mapa[nlinha]
+        for ncol in range (len(mapa[nlinha])):
+            elemento_em_analise = linha_em_analise[ncol]
+            if nlinha == num and ncol == let :
+                #registra ataque
+                if elemento_em_analise == " ":
+                    linhasaida.append("A")
+                elif elemento_em_analise == "N":
+                    linhasaida.append("D")
+            else:
+                #copia celula
+                linhasaida.append(elemento_em_analise)
+        saida.append(linhasaida)
+    return saida
+
 
 #Verifica situação da celular da cpu e jogador
 def situacao_celula(elem,jogador):
@@ -98,8 +113,6 @@ def formatarPais(texto):
     for pais,lista in verificaPais.items():
         if texto in lista:
             return pais
-
-    
 
 
     
