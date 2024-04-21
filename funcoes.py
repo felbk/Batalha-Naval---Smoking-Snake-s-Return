@@ -18,7 +18,8 @@ def cria_mapa(N):
     return mapa
     
 def aloca_navio(letra,num,orine):
-    for letra in range(len(cria_mapa(10))):
+
+    for letra in r:
 
 
     return
@@ -48,6 +49,27 @@ def sorteia_ataque():
     
 def registra_ataque():
     return
+
+def situacao_celula(elem,jogador):
+    if jogador == 'cpu':
+        if elem == ' ':
+            print(' ',end="")
+        elif elem == 'N':
+            print(' ',end="")
+        elif elem == 'A':
+            print('{0}█',end="".format(CORES['blue']))
+        elif elem == 'D':
+            print('{0}█',end="".format(CORES['red']))
+    else:
+        if elem == ' ':
+            print(' ',end="")
+        elif elem == 'N':
+            print('{0}█',end="".format(CORES['green']))
+        elif elem == 'A':
+            print('{0}█',end="".format(CORES['blue']))
+        elif elem == 'D':
+            print('{0}█',end="".format(CORES['red']))
+    return 
 #Printa uma string colorida
 def colorir(cor,texto):
     print('{0}{1}{2}'.format(CORES[cor],texto,CORES['reset']))
