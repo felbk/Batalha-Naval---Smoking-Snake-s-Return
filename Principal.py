@@ -63,6 +63,7 @@ while play:
 
     mapa_cpu = cria_mapa(10) 
     #Alocar nacios - A FAZER 
+    
 
     play = False
     

@@ -77,8 +77,9 @@ def verificarPais(texto):
         if texto in lista:
             return True
     return False
+
 def verifica_letracord(letra):
-    if letra.upper in NUM_LETRA:
+    if letra.upper() in NUM_LETRA:
         return True
     else:
         return False
@@ -89,12 +90,6 @@ def formatarPais(texto):
     for pais,lista in verificaPais.items():
         if texto in lista:
             return pais
-        
-    
-
-situacao_celula('A','cpu')
-
-
 
     
 
