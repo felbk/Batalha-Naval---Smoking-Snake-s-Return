@@ -63,7 +63,9 @@ while play:
 
     mapa_cpu = cria_mapa(10) 
     #Alocar nacios - A FAZER 
-    
+    print (mapa_player)
+    mapa_player = registra_ataque("A",1,mapa_player)
+    print(mapa_player)
 
     play = False
     

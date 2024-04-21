@@ -43,8 +43,12 @@ def valida_entradas():
 def sorteia_ataque():
     return
     
-def registra_ataque():
-    return
+def registra_ataque(let,num,mapa):
+    let = NUM_LETRA[let.upper()]-1
+    num = num-1
+    if mapa[num][let] == ' ':
+        mapa[num][let] = "A"
+    return mapa
 
 def situacao_celula(elem,jogador):
     if jogador == 'cpu':
