@@ -38,13 +38,10 @@ def sorteia_cpu(dici):
         listp.append(pais)
     return choice(listp)
 
-    
-def valida_entradas():
-    return
-        
 def sorteia_ataque():
     return
-    
+
+#Registra ataque e mostra o mapa   
 def registra_ataque(let,num,mapa):
     let = ALFABETO.find(let.upper())
     saida=[]
