@@ -46,8 +46,7 @@ def sorteia_ataque():
     return
     
 def registra_ataque(let,num,mapa):
-    let = NUM_LETRA[let.upper()]-1
-    num = num-1
+    let = ALFABETO.find(let.upper())
     if mapa[num][let] == ' ':
         mapa[num][let] = "A"
     return mapa
@@ -86,8 +85,8 @@ def verificarPais(texto):
     return False
 
 #Verifica se há letra no tabuleiro
-def verifica_letracord(letra):
-    if letra.upper() in NUM_LETRA:
+def verifica_letracord(letra, tam):
+    if letra.upper() in ALFABETO[:len(tam)]:
         return True
     else:
         return False
