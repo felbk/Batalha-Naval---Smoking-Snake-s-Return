@@ -222,4 +222,5 @@ def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
     print(texto)
     return
 
+.
 
