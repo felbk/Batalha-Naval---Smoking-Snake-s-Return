@@ -6,12 +6,12 @@ import random
 
 import time
 play = True
-t = 0.01
+t = 0.1
 
 while play:
-   # pygame.mixer.init()
-    #pygame.mixer.music.load('mp3.mp3')
-    #pygame.mixer.music.play(15)
+    pygame.mixer.init()
+    pygame.mixer.music.load('mp3.mp3')
+    pygame.mixer.music.play(15)
     
     #cabeçalho de inicio
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
@@ -75,6 +75,7 @@ while play:
     time.sleep(0.6 *t)
     
     mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
+
     #Alocar navios - 
     colorir('yellow',"\n gostaria de alocar seus navios automaticamente? (s ou n):", False)
     autoaloc = input("").strip().upper()
@@ -92,17 +93,21 @@ while play:
     quemjoga = random.randint(0,1)
     sorteador = [cpu,player]
     sorteado = sorteador[quemjoga]
-    colorir("red","{} começa atacando:".format(sorteado),True)
+    colorir("red","\n{} começa atacando:\n".format(sorteado),True)
 
     while not foi_derrotado(mapa_cpu) and not foi_derrotado(mapa_player):
         if quemjoga == 0:
+
             #cpu ataca
             lsort = random.randint(0,len(mapa_player)-1)
             csort = random.randint(0,len(mapa_player)-1)
             while ja_foi_atacado(csort,lsort,mapa_player):
                 lsort = random.randint(0,len(mapa_player)-1)
                 csort = random.randint(0,len(mapa_player)-1)
-            mapa_player = registra_ataque(csort,lsort,mapa_player)
+
+            reg = registra_ataque(csort,lsort,mapa_player)
+            mapa_player = reg[0]
+            retorno = reg[1]
             time.sleep(0.5 *t)
 
             quemjoga = 1
@@ -110,6 +115,7 @@ while play:
 
 
         else:
+
              #player ataca
             # insere valores de linha coluna  COM VERIFICAÇÃO
             linha = int(input("Informe o número: "))-1
@@ -122,8 +128,9 @@ while play:
                 colorir("red","Coluna inválida, digite a letra novamente: ",False)
                 coluna = ALFABETO.find(input("").upper())
 
-            while ja_foi_atacado(coluna,linha,mapa_player):
-                # insere valores de linha coluna  COM VERIFICAÇÃO
+            while ja_foi_atacado(coluna,linha,mapa_cpu):
+                # insere valores de linha coluna  COM 
+                colorir('red','\n Ja foi atacado, insira outros valores:',True)
                 linha = int(input("Informe o número: "))-1
                 while not linha < len(mapa_player):
                     colorir("red","Linha inválida, digite o número da linha novamente: ",False)
@@ -133,16 +140,23 @@ while play:
                 while not coluna < len(mapa_player):
                     colorir("red","Coluna inválida, digite a letra novamente: ",False)
                     coluna = ALFABETO.find(input("").upper())
-            mapa_cpu = registra_ataque(coluna,linha,mapa_cpu)
+            reg = registra_ataque(coluna,linha,mapa_cpu)
+            mapa_cpu = reg[0]
+            retorno = reg[1]
             time.sleep(0.5 *t)
         
             quemjoga= 0
         
         mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
+        if retorno == "A":
+            colorir('blue','ÁGUA !! Foi por pouco... \n',True)
+        else:
+            colorir('red','BOOM !! ACERTOU EM CHEIO!! \n',True)
+        
 
 
 
 
-   # pygame.mixer.music.stop()
+    pygame.mixer.music.stop()
     play = False
     

@@ -173,13 +173,15 @@ def registra_ataque(let,num,mapa):
                 #registra ataque
                 if elemento_em_analise == " ":
                     linhasaida.append("A")
+                    retorno = 'A'
                 elif elemento_em_analise == "N":
                     linhasaida.append("D")
+                    retorno = 'D'
             else:
                 #copia celula
                 linhasaida.append(elemento_em_analise)
         saida.append(linhasaida)
-    return saida
+    return [saida,retorno]
 
 
 #Verifica situação da celular da cpu e jogador e printa
