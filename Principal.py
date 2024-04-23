@@ -19,7 +19,8 @@ while play:
     colorir("green","\n \n"+tituloinicio + "\n",True)
 
     
-    # Cpu escolhe pais e aloca frotas -A FAZER
+    # Cpu escolhe pais e aloca frotas 
+    
 
     
     cpu = sorteia_cpu(PAISES) # definição provisória manual da cpu
@@ -72,8 +73,8 @@ while play:
     mapa_cpu = cria_mapa(10) 
     time.sleep(0.6)
     mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
-    #Alocar navios - A FAZER 
-    aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
+    #Alocar navios - 
+    mapa =aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
 
     '''quemjoga = random.choice(0,1)
     while not foi_derrotado(mapa_cpu) and not foi_derrotado(mapa_player):

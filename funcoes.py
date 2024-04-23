@@ -121,6 +121,7 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
                     else:
                         linhasaida.append(elemento_em_analise)
             saida.append(linhasaida)
+        mapa = saida
         mostra_jogo(mapacpu,mapa,cpu,player,len(mapa))
     return mapa
 
