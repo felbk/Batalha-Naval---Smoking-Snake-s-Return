@@ -6,7 +6,7 @@ import random
 
 import time
 play = True
-
+t = 0.01
 
 while play:
    # pygame.mixer.init()
@@ -27,35 +27,35 @@ while play:
     
 
     # Texto de carregamento
-    time.sleep(1)
+    time.sleep(1 *t)
     print('\nIniciando jogo\n ')
-    time.sleep(1)
+    time.sleep(1 *t)
     print('\nSeu oponente será: ',end="")
     colorir("red",cpu + "\n",True)
-    time.sleep(0.8)
+    time.sleep(0.8 *t)
     colorir('yellow','{} está alocando seus navios para a batalha'.format(cpu),False)
-    time.sleep(0.8)
+    time.sleep(0.8 *t)
     for i in range(2):
         colorir("yellow",'.',False)
-        time.sleep(1)
+        time.sleep(1 *t)
     colorir('yellow','.\n ',True)
-    time.sleep(2)
+    time.sleep(2 *t)
     colorir('green','!! {} JÁ ESTÁ NO CAMPO DE BATALHA !!\n '.format(cpu.upper()),True)
-    time.sleep(0.5)
+    time.sleep(0.5 *t)
     colorir("green",frase_de_efeito[cpu],True)
-    time.sleep(1.5)
+    time.sleep(1.5 *t)
 
     #Jogador escolhe País 
-    time.sleep(0.5)
+    time.sleep(0.5 *t)
     colorir("yellow","\n|Analisando as Frotas disponíveis pelo mundo|\n ",True)
-    time.sleep(1.5)
+    time.sleep(1.5 *t)
          #printa Tabela de paises
     for inf,val in PAISES.items():
         colorir('cyan',inf+':',True)
-        time.sleep(0.2)
+        time.sleep(0.2 *t)
         for inf2 , val2 in val.items():
             colorir('black',"     "+inf2+': '+str(val2),True)
-            time.sleep(0.3)
+            time.sleep(0.3 *t)
     print("\n ")
     #Escolha do país
     paisIn = input("Escolha seu país: ")
@@ -63,7 +63,7 @@ while play:
     while verificarPais(paisIn)==False :  
         colorir('red','O valor inserido não está na lista de países, tente novamente:',True)
         paisIn = input("")
-    time.sleep(0.5)
+    time.sleep(0.5 *t)
     player = formatarPais(paisIn)
     if player != cpu:
         colorir('cyan','\n Você escolheu {}, hora de alocar seus navios!! \n'.format(player),True)
@@ -72,7 +72,7 @@ while play:
     #Cria e exibe mapa.
     mapa_player = cria_mapa(10)
    
-    time.sleep(0.6)
+    time.sleep(0.6 *t)
     
     mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
     #Alocar navios - 
@@ -82,12 +82,12 @@ while play:
         mapa_player = aloca_navios_para_cpu(mapa_player,lista_de_blocos(player))
     else:
         mapa_player =aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
-    time.sleep(2)
+    time.sleep(2 *t)
     mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
     colorir('green','\n!! {} CHEGOU AO CAMPO DE BATALHA !!\n '.format(player.upper()),True)
-    time.sleep(0.5)
+    time.sleep(0.5 *t)
     colorir("green",frase_de_efeito[player],True)
-    time.sleep(1.5)
+    time.sleep(1.5 *t)
     
     quemjoga = random.randint(0,1)
     sorteador = [cpu,player]
@@ -103,15 +103,40 @@ while play:
                 lsort = random.randint(0,len(mapa_player)-1)
                 csort = random.randint(0,len(mapa_player)-1)
             mapa_player = registra_ataque(csort,lsort,mapa_player)
-            time.sleep(0.5)
+            time.sleep(0.5 *t)
 
             quemjoga = 1
-            time.sleep(2)
+            
 
 
         else:
              #player ataca
-             quemjoga= 0
+            # insere valores de linha coluna  COM VERIFICAÇÃO
+            linha = int(input("Informe o número: "))-1
+            while not linha < len(mapa_player):
+                colorir("red","Linha inválida, digite o número da linha novamente: ",False)
+                linha = int(input(""))-1
+
+            coluna = ALFABETO.find(input("Informe a letra: ").upper())
+            while not coluna < len(mapa_player):
+                colorir("red","Coluna inválida, digite a letra novamente: ",False)
+                coluna = ALFABETO.find(input("").upper())
+
+            while ja_foi_atacado(coluna,linha,mapa_player):
+                # insere valores de linha coluna  COM VERIFICAÇÃO
+                linha = int(input("Informe o número: "))-1
+                while not linha < len(mapa_player):
+                    colorir("red","Linha inválida, digite o número da linha novamente: ",False)
+                    linha = int(input(""))-1
+
+                coluna = ALFABETO.find(input("Informe a letra: ").upper())
+                while not coluna < len(mapa_player):
+                    colorir("red","Coluna inválida, digite a letra novamente: ",False)
+                    coluna = ALFABETO.find(input("").upper())
+            mapa_cpu = registra_ataque(coluna,linha,mapa_cpu)
+            time.sleep(0.5 *t)
+        
+            quemjoga= 0
         
         mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
 
