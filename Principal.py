@@ -1,12 +1,16 @@
 
 from Basededados import* #Importa variaveis fixas da base de dados
 from funcoes import *
+import pygame # para tocar musica
 
 import time
 play = True
 
 
 while play:
+    pygame.mixer.init()
+    pygame.mixer.music.load('mp3.mp3')
+    pygame.mixer.music.play(True)
     
     #cabeçalho de inicio
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
@@ -68,6 +72,6 @@ while play:
     #Alocar navios - A FAZER 
     
    
-
+    pygame.mixer.music.stop()
     play = False
     
