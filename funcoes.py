@@ -36,6 +36,7 @@ def posicao_suporta(mapa,blocos,linha,coluna,orient):
                 return False
     return True
 
+#Cria lista de blocos a serem colocados
 def lista_de_blocos(Pais):
     saida=[]
     for navio in PAISES[Pais]:
