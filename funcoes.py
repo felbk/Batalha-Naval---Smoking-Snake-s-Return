@@ -33,7 +33,7 @@ def posicao_suporta(mapa,blocos,linha,coluna,orient):
                 return False
     return True
 
-#Aloca nais na posição correta, no tabuleiro
+#Aloca nais na posição correta, no tabuleiro.
 def aloca_navios_para_cpu(mapa,lista):
     for bloco in lista:
         linha = random.randint(0,len(mapa)-1)
