@@ -77,31 +77,33 @@ def registra_ataque(let,num,mapa):
     return saida
 
 
-#Verifica situação da celular da cpu e jogador
-def situacao_celula(elem,jogador):
+#Verifica situação da celular da cpu e jogador e printa
+def printa_situacao_celula(elem,jogador):
     if jogador == 'cpu':
         if elem == ' ':
-            print(' ',end="")
+            print(' '*3,end="")
         elif elem == 'N':
-            print(' ',end="")
+            print(' '*3,end="")
         elif elem == 'A':
-            print('{0}█{1}'.format(CORES['blue'],CORES['reset']),end="")
+            print('{0}█{1}'*3.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}█{1}'.format(CORES['red'],CORES['reset']),end="")
+            print('{0}█{1}'*3.format(CORES['red'],CORES['reset']),end="")
     else:
         if elem == ' ':
-            print(' ',end="")
+            print(' '*3,end="")
         elif elem == 'N':
-            print('{0}█{1}'.format(CORES['green'],CORES['reset']),end="")
+            print('{0}█{1}'*3.format(CORES['green'],CORES['reset']),end="")
         elif elem == 'A':
-            print('{0}█{1}'.format(CORES['blue'],CORES['reset']),end="")
+            print('{0}█{1}'*3.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}█{1}'.format(CORES['red'],CORES['reset']),end="")
+            print('{0}█{1}'*3.format(CORES['red'],CORES['reset']),end="")
     return 
+
 #Printa uma string colorida
 def colorir(cor,texto):
     print('{0}{1}{2}'.format(CORES[cor],texto,CORES['reset']))
     return
+
 #Verifica nome do país
 def verificarPais(texto):
     texto = texto.strip().upper()
