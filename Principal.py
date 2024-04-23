@@ -6,7 +6,7 @@ import random
 
 import time
 play = True
-t = 0.1
+t = 0.4
 
 while play:
     pygame.mixer.init()
@@ -24,7 +24,12 @@ while play:
     cpu = sorteia_cpu(PAISES)
     mapa_cpu = aloca_navios_para_cpu(mapa_cpu,lista_de_blocos(cpu))
     
-    
+    colorir('magenta','Esta apressado? Gostaria de acelerar as animações?(s/n):',False)
+    aceleratempo = input('').upper().strip()
+    if "S" in aceleratempo:
+        t=0.1
+    else:
+        t=1
 
     # Texto de carregamento
     time.sleep(1 *t)
@@ -94,9 +99,12 @@ while play:
     sorteador = [cpu,player]
     sorteado = sorteador[quemjoga]
     colorir("red","\n{} começa atacando:\n".format(sorteado),True)
+    time.sleep(1*t)
 
     while not foi_derrotado(mapa_cpu) and not foi_derrotado(mapa_player):
         if quemjoga == 0:
+            colorir('red','COMPUTADOR ESTÁ ATACANDO..',True)
+            time.sleep(1.5*t)
 
             #cpu ataca
             lsort = random.randint(0,len(mapa_player)-1)
@@ -118,7 +126,9 @@ while play:
 
              #player ataca
             # insere valores de linha coluna  COM VERIFICAÇÃO
-            linha = int(input("Informe o número: "))-1
+            colorir('yellow',"\nSua vez de atacar!",True)
+            mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
+            linha = int(input("\nInforme o número: "))-1
             while not linha < len(mapa_player):
                 colorir("red","Linha inválida, digite o número da linha novamente: ",False)
                 linha = int(input(""))-1
@@ -146,8 +156,9 @@ while play:
             time.sleep(0.5 *t)
         
             quemjoga= 0
-        
+        time.sleep(0.6*t)
         mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
+        time.sleep(0.6*t)
         if retorno == "A":
             colorir('blue','ÁGUA !! Foi por pouco... \n',True)
         else:
