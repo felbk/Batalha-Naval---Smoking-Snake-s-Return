@@ -27,10 +27,10 @@ while play:
     # Texto de carregamento
     time.sleep(1)
     print('\nIniciando jogo\n ')
-    time.sleep(0.4)
+    time.sleep(1)
     print('\nSeu oponente será: ',end="")
     colorir("red",cpu + "\n",True)
-    time.sleep(0.4)
+    time.sleep(0.8)
     colorir('yellow','{} está alocando seus navios para a batalha'.format(cpu),False)
     time.sleep(0.8)
     for i in range(2):
