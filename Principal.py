@@ -2,6 +2,7 @@ from Basededados import* #Importa variaveis fixas da base de dados
 from funcoes import *
 import pygame # para tocar musica
 import random
+
 import time
 play = True
 while play:
@@ -64,18 +65,10 @@ while play:
     #Cria e exibe mapa 
     mapa_player = cria_mapa(10)
     mapa_cpu = cria_mapa(10) 
-    time.sleep(0.6)
-    mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
     #Alocar navios - A FAZER 
     aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
-    '''quemjoga = random.choice(0,1)
-    while not foi_derrotado(mapa_cpu) and not foi_derrotado(mapa_player):
-        if quemjoga == 0:
-            #cpu ataca
-        else:
-             #player ataca
-        
-        mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)'''
+
+
     pygame.mixer.music.stop()
     play = False
     

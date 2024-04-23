@@ -62,8 +62,9 @@ def aloca_navios(mapa,lista):
             saida.append(linhasaida)
         mapa = saida
     return mapa
-#aloca navios para player
-def aloca_navios_para_player(mapa,lista):
+
+
+def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
     for bloco in lista:
         # insere valores de linha coluna e orientação COM VERIFICAÇÃO
         linha = int(input("Informe o número: "))-1
@@ -72,7 +73,7 @@ def aloca_navios_para_player(mapa,lista):
             linha = int(input(""))-1
 
         coluna = ALFABETO.find(input("Informe a letra: ").upper())
-        while verifica_letracord(coluna,len(mapa)) == False:
+        while not coluna < len(mapa):
             colorir("red","Coluna inválida, digite a letra novamente: ",False)
             coluna = ALFABETO.find(input("").upper())
 
@@ -92,7 +93,7 @@ def aloca_navios_para_player(mapa,lista):
                 linha = int(input(""))-1
 
             coluna = ALFABETO.find(input("Informe a letra: ").upper())
-            while verifica_letracord(coluna,len(mapa)) == False:
+            while not coluna < len(mapa):
                 colorir("red","Coluna inválida, digite a letra novamente: ",False)
                 coluna = ALFABETO.find(input("").upper())
 
@@ -103,7 +104,7 @@ def aloca_navios_para_player(mapa,lista):
 
 
         for i in range(len(mapa)):
-            cont_linha +=1
+        
             if i == linha:
                 for j in range(len(mapa[i])):
                     cont_coluna +=1
