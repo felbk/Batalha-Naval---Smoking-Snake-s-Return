@@ -20,8 +20,22 @@ def cria_mapa(N):
 def aloca_navio(letra,num,orine):
     return
     
-def aloca_se_possivel():
-    return
+#verifica se é possivel alocar naquela posição:
+def posicao_suporta(mapa,blocos,linha,coluna,orient):
+    if orient == 'v':
+        if linha >= len(mapa) or linha+blocos > len(mapa):
+            return False
+        for i in range(linha,linha+blocos):
+            if mapa[i][coluna] == "N" :
+                return False
+    else:
+        if coluna >= len(mapa[linha]) or coluna+blocos > len(mapa[linha]):
+            return False
+        for i in range(coluna,coluna+blocos):
+            if mapa[linha][i] == "N" or i >= len(mapa[linha]):
+                return False
+    return True
+
 
 #Verifica se algum jogador foi derrotado   
 def foi_derrotado(matriz):
