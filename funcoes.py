@@ -33,12 +33,8 @@ def posicao_suporta(mapa,blocos,linha,coluna,orient):
                 return False
     return True
 
-#Aloca na posição correta, no tabuleiro da cpu
-def aloca_navios(mapa,lista):
-=======
 #Aloca nais na posição correta, no tabuleiro.
 def aloca_navios_para_cpu(mapa,lista):
->>>>>>> 440023964032a9efbbb516b7d9c157e0c3144de8
     for bloco in lista:
         saida = []
         linha = random.randint(0,len(mapa)-1)
@@ -226,5 +222,5 @@ def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
     print(texto)
     return
 
-.
+
 
