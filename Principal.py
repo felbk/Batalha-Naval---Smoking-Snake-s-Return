@@ -9,9 +9,9 @@ play = True
 
 
 while play:
-    pygame.mixer.init()
-    pygame.mixer.music.load('mp3.mp3')
-    pygame.mixer.music.play(15)
+   # pygame.mixer.init()
+    #pygame.mixer.music.load('mp3.mp3')
+    #pygame.mixer.music.play(15)
     
     #cabeçalho de inicio
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
@@ -73,10 +73,17 @@ while play:
     mapa_player = cria_mapa(10)
    
     time.sleep(0.6)
+    
     mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
     #Alocar navios - 
-    mapa =aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
+    colorir('yellow',"\n gostaria de alocar seus navios automaticamente? (s ou n):", False)
+    autoaloc = input("").strip().upper()
+    if 'S' == autoaloc:
+        mapa_player = aloca_navios_para_cpu(mapa_player,lista_de_blocos(player))
+    else:
+        mapa_player =aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
     time.sleep(2)
+    mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
     colorir('green','\n!! {} CHEGOU AO CAMPO DE BATALHA !!\n '.format(player.upper()),True)
     time.sleep(0.5)
     colorir("green",frase_de_efeito[player],True)
@@ -98,7 +105,7 @@ while play:
             mapa_player = registra_ataque(csort,lsort,mapa_player)
 
             quemjoga = 1
-            
+            time.sleep(2)
 
 
         else:
@@ -110,6 +117,6 @@ while play:
 
 
 
-    pygame.mixer.music.stop()
+   # pygame.mixer.music.stop()
     play = False
     
