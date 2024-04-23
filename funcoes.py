@@ -16,9 +16,6 @@ def cria_mapa(N):
         mapa.append(linha)
         i+=1
     return mapa
- 
-def aloca_navio(,,):
-    return
     
 #verifica se é possivel alocar naquela posição:
 def posicao_suporta(mapa,blocos,linha,coluna,orient):
