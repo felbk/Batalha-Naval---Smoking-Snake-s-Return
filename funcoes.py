@@ -36,6 +36,14 @@ def posicao_suporta(mapa,blocos,linha,coluna,orient):
                 return False
     return True
 
+def lista_de_blocos(Pais):
+    saida=[]
+    for navio in PAISES[Pais]:
+        for i in range(PAISES[Pais][navio]):
+            saida.append(CONFIGURACAO[navio])
+    return saida
+
+
 
 #Verifica se algum jogador foi derrotado   
 def foi_derrotado(matriz):
@@ -81,22 +89,22 @@ def registra_ataque(let,num,mapa):
 def printa_situacao_celula(elem,jogador):
     if jogador == 'cpu':
         if elem == ' ':
-            print(' '*3,end="")
+            print('   ',end="")
         elif elem == 'N':
-            print(' '*3,end="")
+            print('   ',end="")
         elif elem == 'A':
-            print('{0}█{1}'*3.format(CORES['blue'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}█{1}'*3.format(CORES['red'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['red'],CORES['reset']),end="")
     else:
         if elem == ' ':
-            print(' '*3,end="")
+            print('   ',end="")
         elif elem == 'N':
-            print('{0}█{1}'*3.format(CORES['green'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['green'],CORES['reset']),end="")
         elif elem == 'A':
-            print('{0}█{1}'*3.format(CORES['blue'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}█{1}'*3.format(CORES['red'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['red'],CORES['reset']),end="")
     return 
 
 #Printa uma string colorida
@@ -129,4 +137,3 @@ def formatarPais(texto):
 
     
 
-    
