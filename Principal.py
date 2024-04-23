@@ -96,11 +96,10 @@ while play:
                 lsort = random.randint(0,len(mapa_player)-1)
                 csort = random.randint(0,len(mapa_player)-1)
             mapa_player = registra_ataque(csort,lsort,mapa_player)
+            time.sleep(0.5)
 
             quemjoga = 1
             
-
-
         else:
              #player ataca
              quemjoga= 0
