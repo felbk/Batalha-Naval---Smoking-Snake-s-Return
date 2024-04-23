@@ -11,7 +11,7 @@ while play:
     #cabeçalho de inicio
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
     tituloinicio= '╔'+"═"*len(tituloinicio)+'╗'+'\n'+'║'+tituloinicio + '║'+"\n"+'╚'+"═"*len(tituloinicio)+'╝'
-    colorir("green","\n \n"+tituloinicio + "\n")
+    colorir("green","\n \n"+tituloinicio + "\n",True)
 
     
     # Cpu escolhe pais e aloca frotas -A FAZER
@@ -32,31 +32,31 @@ while play:
         time.sleep(1)
     print('.\n ')
     time.sleep(2)
-    colorir('green','!! {} JÁ ESTÁ NO CAMPO DE BATALHA !!\n '.format(cpu.upper()))
+    colorir('green','!! {} JÁ ESTÁ NO CAMPO DE BATALHA !!\n '.format(cpu.upper()),True)
     time.sleep(0.5)
-    colorir("green",frase_de_efeito[cpu])
+    colorir("green",frase_de_efeito[cpu],True)
     time.sleep(1.5)
 
     #Jogador escolhe País 
     time.sleep(0.5)
-    colorir("yellow","\n|Analisando as Frotas disponíveis pelo mundo|\n ")
+    colorir("yellow","\n|Analisando as Frotas disponíveis pelo mundo|\n ",True)
     time.sleep(1.5)
          #printa Tabela de paises
     for inf,val in PAISES.items():
-        colorir('cyan',inf+':')
+        colorir('cyan',inf+':',True)
         time.sleep(0.2)
         for inf2 , val2 in val.items():
-            colorir('black',"     "+inf2+': '+str(val2))
+            colorir('black',"     "+inf2+': '+str(val2),True)
             time.sleep(0.3)
     print("\n ")
     #Escolha do país
     paisIn = input("Escolha seu país: ")
     #Validação do país
     while verificarPais(paisIn)==False :  
-        colorir('red','O valor inserido não está na lista de países, tente novamente:')
+        colorir('red','O valor inserido não está na lista de países, tente novamente:',True)
         paisIn = input("")
     time.sleep(0.5)
-    colorir('cyan','\n Você escolheu {}, hora de alocar seus navios!! \n'.format(formatarPais(paisIn)))
+    colorir('cyan','\n Você escolheu {}, hora de alocar seus navios!! \n'.format(formatarPais(paisIn)),True)
     player = formatarPais(paisIn)
     #Cria e exibe mapa 
     mapa_player = cria_mapa(10)

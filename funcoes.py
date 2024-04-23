@@ -90,27 +90,30 @@ def registra_ataque(let,num,mapa):
 def printa_situacao_celula(elem,jogador):
     if jogador == 'cpu':
         if elem == ' ':
-            print('  ',end="")
+            print('   ',end="")
         elif elem == 'N':
-            print('  ',end="")
+            print('   ',end="")
         elif elem == 'A':
-            print('{0}██{1}'.format(CORES['blue'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}██{1}'.format(CORES['red'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['red'],CORES['reset']),end="")
     else:
         if elem == ' ':
-            print('  ',end="")
+            print('   ',end="")
         elif elem == 'N':
-            print('{0}██{1}'.format(CORES['green'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['green'],CORES['reset']),end="")
         elif elem == 'A':
-            print('{0}██{1}'.format(CORES['blue'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}██{1}'.format(CORES['red'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['red'],CORES['reset']),end="")
     return 
 
 #Printa uma string colorida
-def colorir(cor,texto):
-    print('{0}{1}{2}'.format(CORES[cor],texto,CORES['reset']))
+def colorir(cor,texto,quebralinha):
+    if quebralinha:
+        print('{0}{1}{2}'.format(CORES[cor],texto,CORES['reset']))
+    else:
+        print('{0}{1}{2}'.format(CORES[cor],texto,CORES['reset']), end="")
     return
 
 #Verifica nome do país
@@ -138,18 +141,18 @@ def formatarPais(texto):
 
 def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
     texto=" COMPUTADOR - "+cpu
-    print(texto,end="")
+    colorir('red',texto,False)
 
-    tam = n*2 +6
+    tam = n*3 +6
     texto = " "*(tam - len(texto))
     print(texto,end="")
 
     texto= " JOGADOR - "+player
-    print(texto)
+    colorir('blue',texto,True)
 
     col=''
     for i in range (n):
-        col+=ALFABETO[i]+' '
+        col+=" "+ALFABETO[i]+' '
     col= ' '*2+col+' '*2
     texto = col+' '*2 + col
     print(texto)
@@ -188,7 +191,7 @@ def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
         else:
             texto= str(i)
             print(texto)
-    texto += col+' '*2 + col
+    texto = col+' '*2 + col
     print(texto)
     return
 
