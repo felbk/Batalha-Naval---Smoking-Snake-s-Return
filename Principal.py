@@ -68,7 +68,7 @@ while play:
         colorir('cyan','\n Você escolheu {}, hora de alocar seus navios!! \n'.format(player),True)
     else:
         colorir('cyan','\n Você também escolheu {}? Ok, teremos uma guerra civil hora de alocar seus navios!! \n'.format(player),True)
-    #Cria e exibe mapa 
+    #Cria e exibe mapa.
     mapa_player = cria_mapa(10)
     mapa_cpu = cria_mapa(10) 
     time.sleep(0.6)
