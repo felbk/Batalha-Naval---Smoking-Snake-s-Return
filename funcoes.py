@@ -90,22 +90,22 @@ def registra_ataque(let,num,mapa):
 def printa_situacao_celula(elem,jogador):
     if jogador == 'cpu':
         if elem == ' ':
-            print('   ',end="")
+            print('  ',end="")
         elif elem == 'N':
-            print('   ',end="")
+            print('  ',end="")
         elif elem == 'A':
-            print('{0}███{1}'.format(CORES['blue'],CORES['reset']),end="")
+            print('{0}██{1}'.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}███{1}'.format(CORES['red'],CORES['reset']),end="")
+            print('{0}██{1}'.format(CORES['red'],CORES['reset']),end="")
     else:
         if elem == ' ':
-            print('   ',end="")
+            print('  ',end="")
         elif elem == 'N':
-            print('{0}███{1}'.format(CORES['green'],CORES['reset']),end="")
+            print('{0}██{1}'.format(CORES['green'],CORES['reset']),end="")
         elif elem == 'A':
-            print('{0}███{1}'.format(CORES['blue'],CORES['reset']),end="")
+            print('{0}██{1}'.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}███{1}'.format(CORES['red'],CORES['reset']),end="")
+            print('{0}██{1}'.format(CORES['red'],CORES['reset']),end="")
     return 
 
 #Printa uma string colorida
@@ -135,6 +135,91 @@ def formatarPais(texto):
         if texto in lista:
             return pais
 
+
+def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
+    texto=" COMPUTADOR - "+cpu
+    print(texto,end="")
+
+    tam = n*2 +6
+    texto = " "*(tam - len(texto))
+    print(texto,end="")
+
+    texto= " JOGADOR - "+player
+    print(texto)
+
+    col=''
+    for i in range (n):
+        col+=ALFABETO[i]+' '
+    col= ' '*2+col+' '*2
+    texto = col+' '*2 + col
+    print(texto)
+
+    for i in range(1,n+1):
+        if i<10:
+            texto=' '+str(i)
+            print(texto,end="")
+        else:
+            texto= str(i)
+            print(texto,end="")
+        for j in range(0,n):
+            printa_situacao_celula(mapacpu[i-1][j],'cpu')
+
+        if i<10:
+            texto=str(i)+" "
+            print(texto,end="")
+        else:
+            texto= str(i)
+            print(texto,end="")
+        texto = " "*2
+        print(texto,end="")
+
+        if i<10:
+            texto=' '+str(i)
+            print(texto,end="")
+        else:
+            texto= str(i)
+            print(texto,end="")
+        for j in range(0,n):
+            printa_situacao_celula(mapaplayer[i-1][j],'player')
+
+        if i<10:
+            texto=str(i)+" "
+            print(texto)
+        else:
+            texto= str(i)
+            print(texto)
+    texto += col+' '*2 + col
+    print(texto)
+    return
+
+#teste
+mpcpu = [
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    
+]
+mpplyr = [
+    ['N', 'A' , ' ', 'N',' ',' ',' ',' ', 'N', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ','N',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', 'N', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    [' ', 'A' , ' ', 'N',' ',' ',' ',' ', ' ', " "],
+    
+]
+mostra_jogo(mpcpu,mpplyr,"Russia","Brasil",10)
 
     
 
