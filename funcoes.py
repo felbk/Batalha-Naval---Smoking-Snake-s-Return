@@ -62,6 +62,60 @@ def aloca_navios(mapa,lista):
             saida.append(linhasaida)
         mapa = saida
     return mapa
+#aloca navios para player
+def aloca_navios_para_player(mapa,lista):
+    for bloco in lista:
+        # insere valores de linha coluna e orientação COM VERIFICAÇÃO
+        linha = int(input("Informe o número: "))-1
+        while not linha < len(mapa):
+            colorir("red","Linha inválida, digite o número da linha novamente: ",False)
+            linha = int(input(""))-1
+
+        coluna = ALFABETO.find(input("Informe a letra: ").upper())
+        while verifica_letracord(coluna,len(mapa)) == False:
+            colorir("red","Coluna inválida, digite a letra novamente: ",False)
+            coluna = ALFABETO.find(input("").upper())
+
+        orientacao = input("Digite a orientação (v (vertical) ou h (horizontal))").lower()
+        while orientacao not in ['v','h']:
+            colorir("red","Orientação inválida, digite v ou h : ",False)
+            orientacao = input("").lower()
+
+        #analisa se pode alocar
+        while posicao_suporta(mapa,bloco,linha,coluna,orientacao) != True:
+            colorir('red',"Não foi possível alocar nessa posição, tente novamente:",True)
+
+             # insere valores de linha coluna e orientação COM VERIFICAÇÃO
+            linha = int(input("Informe o número: "))-1
+            while not linha < len(mapa):
+                colorir("red","Linha inválida, digite o número da linha novamente: ",False)
+                linha = int(input(""))-1
+
+            coluna = ALFABETO.find(input("Informe a letra: ").upper())
+            while verifica_letracord(coluna,len(mapa)) == False:
+                colorir("red","Coluna inválida, digite a letra novamente: ",False)
+                coluna = ALFABETO.find(input("").upper())
+
+            orientacao = input("Digite a orientação (v (vertical) ou h (horizontal))").lower()
+            while orientacao not in ['v','h']:
+                colorir("red","Orientação inválida, digite v ou h : ",False)
+                orientacao = input("").lower()
+
+
+        for i in range(len(mapa)):
+            cont_linha +=1
+            if i == linha:
+                for j in range(len(mapa[i])):
+                    cont_coluna +=1
+
+                    if j == coluna:
+                        if orientacao == 'v':
+                            for k in range(bloco):
+                                mapa[linha+k][j] = 'N'
+                        if orientacao == 'h':
+                            for l in range(bloco):
+                                mapa[linha][j+l] = 'N' 
+    return mapa
 
 #Cria lista de blocos a serem colocados
 def lista_de_blocos(Pais):
