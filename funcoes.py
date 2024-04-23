@@ -17,7 +17,7 @@ def cria_mapa(N):
         i+=1
     return mapa
  
-def aloca_navio(letra,num,orine):
+def aloca_navio(,,):
     return
     
 #verifica se é possivel alocar naquela posição:
@@ -35,6 +35,32 @@ def posicao_suporta(mapa,blocos,linha,coluna,orient):
             if mapa[linha][i] == "N" or i >= len(mapa[linha]):
                 return False
     return True
+
+#Aloca nais na posição correta, no tabuleiro
+def aloca_navios(mapa,lista):
+    for bloco in lista:
+        linha = random.randint(0,len(mapa)-1)
+        coluna = random.randint(0,len(mapa[linha])-1)
+        orientacao = random.choice(['h', 'v'])  
+        while posicao_suporta(mapa,bloco,linha,coluna,orientacao) != True:
+            linha = random.randint(0,len(mapa)-1)
+            coluna = random.randint(0,len(mapa[linha])-1)
+            orientacao = random.choice(['h', 'v'])          
+        cont_linha = -1
+        cont_coluna = -1
+        for i in range(len(mapa)):
+            cont_linha +=1
+            if i == linha:
+                for j in range(len(mapa[i])):
+                    cont_coluna +=1
+                    if j == coluna:
+                        if orientacao == 'v':
+                            for k in range(bloco):
+                                mapa[linha+k][j] = 'N'
+                        if orientacao == 'h':
+                            for l in range(bloco):
+                                mapa[linha][j+l] = 'N' 
+    return mapa
 
 #Cria lista de blocos a serem colocados
 def lista_de_blocos(Pais):
