@@ -58,8 +58,9 @@ def aloca_navios_para_cpu(mapa,lista):
     return mapa
 
 
-def aloca_navios_para_player(mapa,lista):
+def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
     for bloco in lista:
+        colorir('cyan','Alocando navio de tamanho {}'.format(bloco),True)
         # insere valores de linha coluna e orientação COM VERIFICAÇÃO
         linha = int(input("Informe o número: "))-1
         while not linha < len(mapa):
@@ -67,7 +68,7 @@ def aloca_navios_para_player(mapa,lista):
             linha = int(input(""))-1
 
         coluna = ALFABETO.find(input("Informe a letra: ").upper())
-        while verifica_letracord(coluna,len(mapa)) == False:
+        while not coluna < len(mapa):
             colorir("red","Coluna inválida, digite a letra novamente: ",False)
             coluna = ALFABETO.find(input("").upper())
 
@@ -87,7 +88,7 @@ def aloca_navios_para_player(mapa,lista):
                 linha = int(input(""))-1
 
             coluna = ALFABETO.find(input("Informe a letra: ").upper())
-            while verifica_letracord(coluna,len(mapa)) == False:
+            while not coluna < len(mapa):
                 colorir("red","Coluna inválida, digite a letra novamente: ",False)
                 coluna = ALFABETO.find(input("").upper())
 
@@ -98,7 +99,7 @@ def aloca_navios_para_player(mapa,lista):
 
                     
         for i in range(len(mapa)):
-            cont_linha +=1
+        
             if i == linha:
                 for j in range(len(mapa[i])):
                 
@@ -109,6 +110,7 @@ def aloca_navios_para_player(mapa,lista):
                         if orientacao == 'h':
                             for l in range(bloco):
                                 mapa[linha][j+l] = 'N' 
+        mostra_jogo(mapacpu,mapa,cpu,player,len(mapa))
     return mapa
 
 #Cria lista de blocos a serem colocados

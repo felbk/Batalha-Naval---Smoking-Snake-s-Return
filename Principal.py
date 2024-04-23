@@ -2,6 +2,7 @@
 from Basededados import* #Importa variaveis fixas da base de dados
 from funcoes import *
 import pygame # para tocar musica
+import random
 
 import time
 play = True
@@ -10,7 +11,7 @@ play = True
 while play:
     pygame.mixer.init()
     pygame.mixer.music.load('mp3.mp3')
-    pygame.mixer.music.play(15)
+    #pygame.mixer.music.play(15)
     
     #cabeçalho de inicio
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
@@ -69,9 +70,12 @@ while play:
     #Cria e exibe mapa 
     mapa_player = cria_mapa(10)
     mapa_cpu = cria_mapa(10) 
+    time.sleep(0.6)
+    mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
     #Alocar navios - A FAZER 
-    
-   
+    aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
+
+
     pygame.mixer.music.stop()
     play = False
     
