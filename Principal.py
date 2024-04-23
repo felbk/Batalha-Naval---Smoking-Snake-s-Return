@@ -82,7 +82,7 @@ while play:
     colorir("green",frase_de_efeito[player],True)
     time.sleep(1.5)
     
-    quemjoga = random.choice(0,1)
+    quemjoga = random.randint(0,1)
     sorteador = [cpu,player]
     sorteado = sorteador[quemjoga]
     colorir("red","{} começa atacando:".format(sorteado),True)
@@ -90,10 +90,20 @@ while play:
     while not foi_derrotado(mapa_cpu) and not foi_derrotado(mapa_player):
         if quemjoga == 0:
             #cpu ataca
+            lsort = random.randint(0,len(mapa_player)-1)
+            csort = random.randint(0,len(mapa_player)-1)
+            while ja_foi_atacado(csort,lsort,mapa_player):
+                lsort = random.randint(0,len(mapa_player)-1)
+                csort = random.randint(0,len(mapa_player)-1)
+            mapa_player = registra_ataque(csort,lsort,mapa_player)
+
+            quemjoga = 1
+            
 
 
         else:
              #player ataca
+             quemjoga= 0
         
         mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
 

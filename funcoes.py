@@ -163,7 +163,6 @@ def sorteia_ataque():
 
 #Registra ataque e mostra o mapa   
 def registra_ataque(let,num,mapa):
-    let = ALFABETO.find(let.upper())
     saida=[]
     for nlinha in range(len(mapa)):
         linhasaida= []
