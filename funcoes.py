@@ -33,9 +33,10 @@ def posicao_suporta(mapa,blocos,linha,coluna,orient):
                 return False
     return True
 
-#Aloca nais na posição correta, no tabuleiro
+#Aloca na posição correta, no tabuleiro da cpu
 def aloca_navios(mapa,lista):
     for bloco in lista:
+        saida = []
         linha = random.randint(0,len(mapa)-1)
         coluna = random.randint(0,len(mapa[linha])-1)
         orientacao = random.choice(['h', 'v'])  
@@ -43,20 +44,23 @@ def aloca_navios(mapa,lista):
             linha = random.randint(0,len(mapa)-1)
             coluna = random.randint(0,len(mapa[linha])-1)
             orientacao = random.choice(['h', 'v'])          
-        cont_linha = -1
-        cont_coluna = -1
         for i in range(len(mapa)):
-            cont_linha +=1
-            if i == linha:
-                for j in range(len(mapa[i])):
-                    cont_coluna +=1
-                    if j == coluna:
-                        if orientacao == 'v':
-                            for k in range(bloco):
-                                mapa[linha+k][j] = 'N'
-                        if orientacao == 'h':
-                            for l in range(bloco):
-                                mapa[linha][j+l] = 'N' 
+            linhasaida = []
+            linha_em_analise = mapa[i]
+            for j in range(len(mapa[i])):
+                elemento_em_analise = linha_em_analise[j]
+                if orientacao == 'v':
+                    if j == coluna and i in range(linha,linha+bloco):
+                            linhasaida.append('N')
+                    else:
+                        linhasaida.append(elemento_em_analise)
+                if orientacao == 'h':
+                    if j in range(coluna,coluna+bloco) and i == linha:
+                        linhasaida.append('N')
+                    else:
+                        linhasaida.append(elemento_em_analise)
+            saida.append(linhasaida)
+        mapa = saida
     return mapa
 
 #Cria lista de blocos a serem colocados
@@ -217,6 +221,5 @@ def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
     texto = col+' '*2 + col
     print(texto)
     return
-
 
 
