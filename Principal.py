@@ -10,7 +10,7 @@ play = True
 while play:
     pygame.mixer.init()
     pygame.mixer.music.load('mp3.mp3')
-    pygame.mixer.music.play(True)
+    pygame.mixer.music.play(15)
     
     #cabeçalho de inicio
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
