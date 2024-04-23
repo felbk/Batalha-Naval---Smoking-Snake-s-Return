@@ -34,9 +34,8 @@ def posicao_suporta(mapa,blocos,linha,coluna,orient):
     return True
 
 #Aloca nais na posição correta, no tabuleiro.
-def aloca_navios(mapa,lista):
+def aloca_navios_para_cpu(mapa,lista):
     for bloco in lista:
-        saida = []
         linha = random.randint(0,len(mapa)-1)
         coluna = random.randint(0,len(mapa[linha])-1)
         orientacao = random.choice(['h', 'v'])  
@@ -44,28 +43,24 @@ def aloca_navios(mapa,lista):
             linha = random.randint(0,len(mapa)-1)
             coluna = random.randint(0,len(mapa[linha])-1)
             orientacao = random.choice(['h', 'v'])          
+        
         for i in range(len(mapa)):
-            linhasaida = []
-            linha_em_analise = mapa[i]
-            for j in range(len(mapa[i])):
-                elemento_em_analise = linha_em_analise[j]
-                if orientacao == 'v':
-                    if j == coluna and i in range(linha,linha+bloco):
-                            linhasaida.append('N')
-                    else:
-                        linhasaida.append(elemento_em_analise)
-                if orientacao == 'h':
-                    if j in range(coluna,coluna+bloco) and i == linha:
-                        linhasaida.append('N')
-                    else:
-                        linhasaida.append(elemento_em_analise)
-            saida.append(linhasaida)
-        mapa = saida
+           
+            if i == linha:
+                for j in range(len(mapa[i])):
+                    if j == coluna:
+                        if orientacao == 'v':
+                            for k in range(bloco):
+                                mapa[linha+k][j] = 'N'
+                        if orientacao == 'h':
+                            for l in range(bloco):
+                                mapa[linha][j+l] = 'N' 
     return mapa
 
 
 def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
     for bloco in lista:
+        colorir('cyan','Alocando navio de tamanho {}'.format(bloco),True)
         # insere valores de linha coluna e orientação COM VERIFICAÇÃO
         linha = int(input("Informe o número: "))-1
         while not linha < len(mapa):
@@ -102,13 +97,12 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
                 colorir("red","Orientação inválida, digite v ou h : ",False)
                 orientacao = input("").lower()
 
-
+                    
         for i in range(len(mapa)):
         
             if i == linha:
                 for j in range(len(mapa[i])):
-                    cont_coluna +=1
-
+                
                     if j == coluna:
                         if orientacao == 'v':
                             for k in range(bloco):
@@ -116,6 +110,7 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
                         if orientacao == 'h':
                             for l in range(bloco):
                                 mapa[linha][j+l] = 'N' 
+        mostra_jogo(mapacpu,mapa,cpu,player,len(mapa))
     return mapa
 
 #Cria lista de blocos a serem colocados

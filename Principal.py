@@ -1,3 +1,4 @@
+
 from Basededados import* #Importa variaveis fixas da base de dados
 from funcoes import *
 import pygame # para tocar musica
@@ -5,6 +6,8 @@ import random
 
 import time
 play = True
+
+
 while play:
     pygame.mixer.init()
     pygame.mixer.music.load('mp3.mp3')
@@ -14,18 +17,19 @@ while play:
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
     tituloinicio= '╔'+"═"*len(tituloinicio)+'╗'+'\n'+'║'+tituloinicio + '║'+"\n"+'╚'+"═"*len(tituloinicio)+'╝'
     colorir("green","\n \n"+tituloinicio + "\n",True)
+
     
     # Cpu escolhe pais e aloca frotas -A FAZER
+
     
     cpu = sorteia_cpu(PAISES) # definição provisória manual da cpu
+
     # Texto de carregamento
     time.sleep(1)
     print('\nIniciando jogo\n ')
-    time.sleep(0.4)
     time.sleep(1)
     print('\nSeu oponente será: ',end="")
     colorir("red",cpu + "\n",True)
-    time.sleep(0.4)
     time.sleep(0.8)
     colorir('yellow','{} está alocando seus navios para a batalha'.format(cpu),False)
     time.sleep(0.8)
@@ -38,6 +42,7 @@ while play:
     time.sleep(0.5)
     colorir("green",frase_de_efeito[cpu],True)
     time.sleep(1.5)
+
     #Jogador escolhe País 
     time.sleep(0.5)
     colorir("yellow","\n|Analisando as Frotas disponíveis pelo mundo|\n ",True)
@@ -65,8 +70,23 @@ while play:
     #Cria e exibe mapa 
     mapa_player = cria_mapa(10)
     mapa_cpu = cria_mapa(10) 
+    time.sleep(0.6)
+    mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
     #Alocar navios - A FAZER 
     aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
+
+    '''quemjoga = random.choice(0,1)
+    while not foi_derrotado(mapa_cpu) and not foi_derrotado(mapa_player):
+        if quemjoga == 0:
+            #cpu ataca
+
+
+        else:
+             #player ataca
+        
+        mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)'''
+
+
 
 
     pygame.mixer.music.stop()
