@@ -33,6 +33,13 @@ def posicao_suporta(mapa,blocos,linha,coluna,orient):
                 return False
     return True
 
+#confere se posição ja foi atacada
+def ja_foi_atacado(col,linha,mapa):
+    if mapa[linha][col]=="A" or mapa[linha][col]=="D" :
+        return True
+    else:
+        return False
+
 #Aloca nas na posiç~eos correta da cpu, no tabuleiro.
 def aloca_navios_para_cpu(mapa,lista):
     for bloco in lista:
@@ -151,6 +158,7 @@ def sorteia_cpu(dici):
     return random.choice(listp)
 
 def sorteia_ataque():
+
     return
 
 #Registra ataque e mostra o mapa   

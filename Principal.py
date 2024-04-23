@@ -77,12 +77,16 @@ while play:
     #Alocar navios - 
     mapa =aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
     time.sleep(2)
-    colorir('green','!! {} CHEGOU AO CAMPO DE BATALHA !!\n '.format(player.upper()),True)
+    colorir('green','\n!! {} CHEGOU AO CAMPO DE BATALHA !!\n '.format(player.upper()),True)
     time.sleep(0.5)
     colorir("green",frase_de_efeito[player],True)
     time.sleep(1.5)
     
-    '''quemjoga = random.choice(0,1)
+    quemjoga = random.choice(0,1)
+    sorteador = [cpu,player]
+    sorteado = sorteador[quemjoga]
+    colorir("red","{} começa atacando:".format(sorteado),True)
+
     while not foi_derrotado(mapa_cpu) and not foi_derrotado(mapa_player):
         if quemjoga == 0:
             #cpu ataca
@@ -91,7 +95,7 @@ while play:
         else:
              #player ataca
         
-        mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)'''
+        mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
 
 
 
