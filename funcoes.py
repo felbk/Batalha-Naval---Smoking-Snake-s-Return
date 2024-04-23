@@ -221,6 +221,6 @@ def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
     texto = col+' '*2 + col
     print(texto)
     return
-.
+
 
 
