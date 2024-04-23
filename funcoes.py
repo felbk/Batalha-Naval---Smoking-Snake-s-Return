@@ -16,9 +16,6 @@ def cria_mapa(N):
         mapa.append(linha)
         i+=1
     return mapa
- 
-def aloca_navio(letra,num,orine):
-    return
     
 #verifica se é possivel alocar naquela posição:
 def posicao_suporta(mapa,blocos,linha,coluna,orient):
@@ -36,6 +33,45 @@ def posicao_suporta(mapa,blocos,linha,coluna,orient):
                 return False
     return True
 
+#Aloca nais na posição correta, no tabuleiro.
+def aloca_navios_para_cpu(mapa,lista):
+    for bloco in lista:
+        saida = []
+        linha = random.randint(0,len(mapa)-1)
+        coluna = random.randint(0,len(mapa[linha])-1)
+        orientacao = random.choice(['h', 'v'])  
+        while posicao_suporta(mapa,bloco,linha,coluna,orientacao) != True:
+            linha = random.randint(0,len(mapa)-1)
+            coluna = random.randint(0,len(mapa[linha])-1)
+            orientacao = random.choice(['h', 'v'])          
+        for i in range(len(mapa)):
+            linhasaida = []
+            linha_em_analise = mapa[i]
+            for j in range(len(mapa[i])):
+                elemento_em_analise = linha_em_analise[j]
+                if orientacao == 'v':
+                    if j == coluna and i in range(linha,linha+bloco):
+                            linhasaida.append('N')
+                    else:
+                        linhasaida.append(elemento_em_analise)
+                if orientacao == 'h':
+                    if j in range(coluna,coluna+bloco) and i == linha:
+                        linhasaida.append('N')
+                    else:
+                        linhasaida.append(elemento_em_analise)
+            saida.append(linhasaida)
+        mapa = saida
+    return mapa
+
+#Cria lista de blocos a serem colocados
+def lista_de_blocos(Pais):
+    saida=[]
+    for navio in PAISES[Pais]:
+        for i in range(PAISES[Pais][navio]):
+            saida.append(CONFIGURACAO[navio])
+    return saida
+
+
 
 #Verifica se algum jogador foi derrotado   
 def foi_derrotado(matriz):
@@ -52,16 +88,12 @@ def sorteia_cpu(dici):
         listp.append(pais)
     return choice(listp)
 
-    
-def valida_entradas():
-    return
-        
 def sorteia_ataque():
     return
-    
+
+#Registra ataque e mostra o mapa   
 def registra_ataque(let,num,mapa):
-    let = NUM_LETRA[let.upper()]-1
-    num = num-1
+    let = ALFABETO.find(let.upper())
     saida=[]
     for nlinha in range(len(mapa)):
         linhasaida= []
@@ -81,31 +113,36 @@ def registra_ataque(let,num,mapa):
     return saida
 
 
-#Verifica situação da celular da cpu e jogador
-def situacao_celula(elem,jogador):
+#Verifica situação da celular da cpu e jogador e printa
+def printa_situacao_celula(elem,jogador):
     if jogador == 'cpu':
         if elem == ' ':
-            print(' ',end="")
+            print('   ',end="")
         elif elem == 'N':
-            print(' ',end="")
+            print('   ',end="")
         elif elem == 'A':
-            print('{0}█{1}'.format(CORES['blue'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}█{1}'.format(CORES['red'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['red'],CORES['reset']),end="")
     else:
         if elem == ' ':
-            print(' ',end="")
+            print('   ',end="")
         elif elem == 'N':
-            print('{0}█{1}'.format(CORES['green'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['green'],CORES['reset']),end="")
         elif elem == 'A':
-            print('{0}█{1}'.format(CORES['blue'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}█{1}'.format(CORES['red'],CORES['reset']),end="")
+            print('{0}███{1}'.format(CORES['red'],CORES['reset']),end="")
     return 
+
 #Printa uma string colorida
-def colorir(cor,texto):
-    print('{0}{1}{2}'.format(CORES[cor],texto,CORES['reset']))
+def colorir(cor,texto,quebralinha):
+    if quebralinha:
+        print('{0}{1}{2}'.format(CORES[cor],texto,CORES['reset']))
+    else:
+        print('{0}{1}{2}'.format(CORES[cor],texto,CORES['reset']), end="")
     return
+
 #Verifica nome do país
 def verificarPais(texto):
     texto = texto.strip().upper()
@@ -115,8 +152,8 @@ def verificarPais(texto):
     return False
 
 #Verifica se há letra no tabuleiro
-def verifica_letracord(letra):
-    if letra.upper() in NUM_LETRA:
+def verifica_letracord(letra, tam):
+    if letra.upper() in ALFABETO[:len(tam)]:
         return True
     else:
         return False
@@ -129,6 +166,61 @@ def formatarPais(texto):
             return pais
 
 
-    
+def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
+    texto=" COMPUTADOR - "+cpu
+    colorir('red',texto,False)
 
-    
+    tam = n*3 +6
+    texto = " "*(tam - len(texto))
+    print(texto,end="")
+
+    texto= " JOGADOR - "+player
+    colorir('blue',texto,True)
+
+    col=''
+    for i in range (n):
+        col+=" "+ALFABETO[i]+' '
+    col= ' '*2+col+' '*2
+    texto = col+' '*2 + col
+    print(texto)
+
+    for i in range(1,n+1):
+        if i<10:
+            texto=' '+str(i)
+            print(texto,end="")
+        else:
+            texto= str(i)
+            print(texto,end="")
+        for j in range(0,n):
+            printa_situacao_celula(mapacpu[i-1][j],'cpu')
+
+        if i<10:
+            texto=str(i)+" "
+            print(texto,end="")
+        else:
+            texto= str(i)
+            print(texto,end="")
+        texto = " "*2
+        print(texto,end="")
+
+        if i<10:
+            texto=' '+str(i)
+            print(texto,end="")
+        else:
+            texto= str(i)
+            print(texto,end="")
+        for j in range(0,n):
+            printa_situacao_celula(mapaplayer[i-1][j],'player')
+
+        if i<10:
+            texto=str(i)+" "
+            print(texto)
+        else:
+            texto= str(i)
+            print(texto)
+    texto = col+' '*2 + col
+    print(texto)
+    return
+
+
+
