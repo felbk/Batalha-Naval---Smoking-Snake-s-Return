@@ -52,16 +52,12 @@ def sorteia_cpu(dici):
         listp.append(pais)
     return choice(listp)
 
-    
-def valida_entradas():
-    return
-        
 def sorteia_ataque():
     return
-    
+
+#Registra ataque e mostra o mapa   
 def registra_ataque(let,num,mapa):
-    let = NUM_LETRA[let.upper()]-1
-    num = num-1
+    let = ALFABETO.find(let.upper())
     saida=[]
     for nlinha in range(len(mapa)):
         linhasaida= []
@@ -115,8 +111,8 @@ def verificarPais(texto):
     return False
 
 #Verifica se há letra no tabuleiro
-def verifica_letracord(letra):
-    if letra.upper() in NUM_LETRA:
+def verifica_letracord(letra, tam):
+    if letra.upper() in ALFABETO[:len(tam)]:
         return True
     else:
         return False
