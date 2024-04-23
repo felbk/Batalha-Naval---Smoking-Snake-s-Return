@@ -2,7 +2,7 @@
 from Basededados import* #Importa variaveis fixas da base de dados
 from funcoes import *
 import pygame # para tocar musica
-import random
+import random 
 
 import time
 play = True
@@ -20,10 +20,11 @@ while play:
 
     
     # Cpu escolhe pais e aloca frotas 
+    mapa_cpu = cria_mapa(10) 
+    cpu = sorteia_cpu(PAISES)
+    mapa_cpu = aloca_navios_para_cpu(mapa_cpu,lista_de_blocos(cpu))
     
-
     
-    cpu = sorteia_cpu(PAISES) # definição provisória manual da cpu
 
     # Texto de carregamento
     time.sleep(1)
@@ -70,12 +71,17 @@ while play:
         colorir('cyan','\n Você também escolheu {}? Ok, teremos uma guerra civil hora de alocar seus navios!! \n'.format(player),True)
     #Cria e exibe mapa.
     mapa_player = cria_mapa(10)
-    mapa_cpu = cria_mapa(10) 
+   
     time.sleep(0.6)
     mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
     #Alocar navios - 
     mapa =aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
-
+    time.sleep(2)
+    colorir('green','!! {} CHEGOU AO CAMPO DE BATALHA !!\n '.format(player.upper()),True)
+    time.sleep(0.5)
+    colorir("green",frase_de_efeito[player],True)
+    time.sleep(1.5)
+    
     '''quemjoga = random.choice(0,1)
     while not foi_derrotado(mapa_cpu) and not foi_derrotado(mapa_player):
         if quemjoga == 0:

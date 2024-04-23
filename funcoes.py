@@ -1,6 +1,6 @@
 #funções para facilitar a organização
 from Basededados import*
-from random import *
+import random
 
 #Cria tabuleiro do jogo
 def cria_mapa(N):
@@ -67,7 +67,7 @@ def aloca_navios_para_cpu(mapa,lista):
 def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
     for bloco in lista:
         saida = []
-        colorir('cyan','Alocando navio de tamanho {}'.format(bloco),True)
+        colorir('cyan','\n Alocando navio de tamanho {}\n'.format(bloco),True)
         # insere valores de linha coluna e orientação COM VERIFICAÇÃO
         linha = int(input("Informe o número: "))-1
         while not linha < len(mapa):
@@ -148,7 +148,7 @@ def sorteia_cpu(dici):
     listp =[]
     for pais in dici:
         listp.append(pais)
-    return choice(listp)
+    return random.choice(listp)
 
 def sorteia_ataque():
     return
