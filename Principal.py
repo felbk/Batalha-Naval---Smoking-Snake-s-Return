@@ -11,7 +11,7 @@ play = True
 while play:
     pygame.mixer.init()
     pygame.mixer.music.load('mp3.mp3')
-    #pygame.mixer.music.play(15)
+    pygame.mixer.music.play(15)
     
     #cabeçalho de inicio
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
@@ -74,6 +74,19 @@ while play:
     mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
     #Alocar navios - A FAZER 
     aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
+
+    '''quemjoga = random.choice(0,1)
+    while not foi_derrotado(mapa_cpu) and not foi_derrotado(mapa_player):
+        if quemjoga == 0:
+            #cpu ataca
+
+
+        else:
+             #player ataca
+        
+        mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)'''
+
+
 
 
     pygame.mixer.music.stop()
