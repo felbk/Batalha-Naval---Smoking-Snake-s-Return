@@ -23,14 +23,15 @@ while play:
     time.sleep(1)
     print('\nIniciando jogo\n ')
     time.sleep(0.4)
-    print('\nSeu oponente será: {}\n '.format(cpu))
+    print('\nSeu oponente será: ',end="")
+    colorir("red",cpu + "\n",True)
     time.sleep(0.4)
-    print('{} está alocando seus navios para a batalha'.format(cpu),end='')
+    colorir('yellow','{} está alocando seus navios para a batalha'.format(cpu),False)
     time.sleep(0.8)
     for i in range(2):
-        print('.',end='')
+        colorir("yellow",'.',False)
         time.sleep(1)
-    print('.\n ')
+    colorir('yellow','.\n ',True)
     time.sleep(2)
     colorir('green','!! {} JÁ ESTÁ NO CAMPO DE BATALHA !!\n '.format(cpu.upper()),True)
     time.sleep(0.5)
@@ -56,8 +57,11 @@ while play:
         colorir('red','O valor inserido não está na lista de países, tente novamente:',True)
         paisIn = input("")
     time.sleep(0.5)
-    colorir('cyan','\n Você escolheu {}, hora de alocar seus navios!! \n'.format(formatarPais(paisIn)),True)
     player = formatarPais(paisIn)
+    if player != cpu:
+        colorir('cyan','\n Você escolheu {}, hora de alocar seus navios!! \n'.format(player),True)
+    else:
+        colorir('cyan','\n Você também escolheu {}? Ok, teremos uma guerra civil hora de alocar seus navios!! \n'.format(player),True)
     #Cria e exibe mapa 
     mapa_player = cria_mapa(10)
     mapa_cpu = cria_mapa(10) 
