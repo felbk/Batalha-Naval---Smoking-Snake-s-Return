@@ -77,3 +77,7 @@ CORES = {
     'cyan': '\u001b[36m',
     'white': '\u001b[37m'
 }
+numeros = []
+for i in range(1,11):
+    numeros.append(str(i))
+    

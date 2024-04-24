@@ -76,10 +76,7 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
         saida = []
         colorir('cyan','\n Alocando navio de tamanho {}\n'.format(bloco),True)
         # insere valores de linha coluna e orientação COM VERIFICAÇÃO
-        linha = int(input("Informe o número: "))-1
-        while not linha < len(mapa):
-            colorir("red","Linha inválida, digite o número da linha novamente: ",False)
-            linha = int(input(""))-1
+        linha = input_valida_linha()
 
         coluna = ALFABETO.find(input("Informe a letra: ").upper())
         while not coluna < len(mapa):
@@ -96,10 +93,7 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
             colorir('red',"Não foi possível alocar nessa posição, tente novamente:",True)
 
              # insere valores de linha coluna e orientação COM VERIFICAÇÃO
-            linha = int(input("Informe o número: "))-1
-            while not linha < len(mapa):
-                colorir("red","Linha inválida, digite o número da linha novamente: ",False)
-                linha = int(input(""))-1
+            linha = input_valida_linha()
 
             coluna = ALFABETO.find(input("Informe a letra: ").upper())
             while not coluna < len(mapa):
@@ -131,6 +125,27 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
         mapa = saida
         mostra_jogo(mapacpu,mapa,cpu,player,len(mapa))
     return mapa
+
+def input_valida_linha():
+    linha = input("Informe o número: ")
+    if linha not in numeros:
+        invalido= True
+    else:
+        linha = int(linha)-1
+        invalido = False
+    while invalido:
+        colorir("red","Linha inválida, digite o número da linha novamente: ",False)
+        linha = input("")
+        if linha not in numeros:
+            invalido= True
+        else:
+            linha = int(linha)-1
+            invalido = False
+    return linha
+
+   
+    
+    
 
 #Cria lista de blocos a serem colocados
 def lista_de_blocos(Pais):

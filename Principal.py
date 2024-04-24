@@ -140,10 +140,7 @@ while play:
             # insere valores de linha coluna  COM VERIFICAÇÃO
             colorir('yellow',"\nSua vez de atacar!",True)
             mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
-            linha = int(input("\nInforme o número: "))-1
-            while not linha < len(mapa_player):
-                colorir("red","Linha inválida, digite o número da linha novamente: ",False)
-                linha = int(input(""))-1
+            linha = input_valida_linha()
 
             coluna = ALFABETO.find(input("Informe a letra: ").upper())
             while not coluna < len(mapa_player):
@@ -153,10 +150,7 @@ while play:
             while ja_foi_atacado(coluna,linha,mapa_cpu):
                 # insere valores de linha coluna  COM 
                 colorir('red','\n Ja foi atacado, insira outros valores:',True)
-                linha = int(input("Informe o número: "))-1
-                while not linha < len(mapa_player):
-                    colorir("red","Linha inválida, digite o número da linha novamente: ",False)
-                    linha = int(input(""))-1
+                linha = input_valida_linha()
 
                 coluna = ALFABETO.find(input("Informe a letra: ").upper())
                 while not coluna < len(mapa_player):
