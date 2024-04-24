@@ -7,10 +7,10 @@ import random
 import time
 play = True
 t = 0.4
+pygame.mixer.init()
+pygame.mixer.music.load('mp3.mp3')
 
 while play:
-    pygame.mixer.init()
-    pygame.mixer.music.load('mp3.mp3')
     pygame.mixer.music.play(15)
     
     #cabeçalho de inicio
@@ -163,11 +163,15 @@ while play:
             colorir('blue','ÁGUA !! Foi por pouco... \n',True)
         else:
             colorir('red','BOOM !! ACERTOU EM CHEIO!! \n',True)
-        
-
-
-
+    if foi_derrotado(mapa_cpu):
+        colorir('green',"\nVocê ganhou!!!\n",True)
+    else:
+        colorir('black','\nVocê perdeu...\n',True)
+    
+    colorir('yellow','\n Deseja jogar novamente (s ou n):\n',False)
+    pergunta = input("").strip().upper()
+    if 'N' in pergunta:
+        play = False
 
     pygame.mixer.music.stop()
-    play = False
     

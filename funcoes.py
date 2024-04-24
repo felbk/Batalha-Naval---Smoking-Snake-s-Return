@@ -157,10 +157,6 @@ def sorteia_cpu(dici):
         listp.append(pais)
     return random.choice(listp)
 
-def sorteia_ataque():
-
-    return
-
 #Registra ataque e mostra o mapa   
 def registra_ataque(let,num,mapa):
     saida=[]
@@ -207,7 +203,7 @@ def printa_situacao_celula(elem,jogador):
     return 
 
 #Printa uma string colorida
-def colorir(cor,texto,quebralinha):
+def colorir(cor= "cor",texto="Texto",quebralinha=True or False):
     if quebralinha:
         print('{0}{1}{2}'.format(CORES[cor],texto,CORES['reset']))
     else:
