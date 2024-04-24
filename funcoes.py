@@ -33,7 +33,7 @@ def posicao_suporta(mapa,blocos,linha,coluna,orient):
                 return False
     return True
 
-#confere se posição ja foi atacada
+#confere se posição ja foi atacada.
 def ja_foi_atacado(col,linha,mapa):
     if mapa[linha][col]=="A" or mapa[linha][col]=="D" :
         return True
