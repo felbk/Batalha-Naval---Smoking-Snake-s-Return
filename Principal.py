@@ -73,7 +73,7 @@ while play:
     #=======JOGADOR ESCOLHE SEU PAÍS==========================================
     paisIn = input("Escolha seu país: ")
 
-    #======VALIDA PAIS ESCOLHIDO==============================================
+    #======VALIDA PAÍS ESCOLHIDO==============================================
     while verificarPais(paisIn)==False :  
         colorir('red','O valor inserido não está na lista de países, tente novamente:',True)
         paisIn = input("")
