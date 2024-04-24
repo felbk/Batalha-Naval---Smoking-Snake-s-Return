@@ -154,7 +154,23 @@ def input_valida_coluna():
             invalido = False
     return coluna
 
+def input_valida_orientacao():
+    orient = input("Digite a orientação (v (vertical) ou h (horizontal)): ").upper().strip()
+    if orient not in ['H','V']: 
+        invalido = True
+    else:
+        orient = orient.lower()
+        invalido= False
+    while invalido:
+        colorir('red','Orientação invalida! insira v ou h: ',False)
+        orient = input("").upper().strip()
+        if orient not in ['H','V']: 
+            invalido = True
+        else:
+            orient = orient.lower()
+            invalido= False
 
+    return orient
 
     
     
@@ -316,5 +332,3 @@ def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
     print(texto)
     return
 
-
-input_valida_coluna()
