@@ -30,7 +30,7 @@ while play:
     #=====CPU CRIA MAPA E ALOCA NAVIOS=================================== 
     mapa_cpu = cria_mapa(10) 
     cpu = sorteia_cpu(PAISES)
-    mapa_cpu = aloca_navios_para_cpu(mapa_cpu,lista_de_blocos(cpu))
+    mapa_cpu = aloca_navios(mapa_cpu,lista_de_blocos(cpu))
 
     #=====OPÇÃO PARA ACELERAR AS ANIMAÇÕES ==============================
     colorir('magenta','Está apressado? Gostaria de acelerar as animações?(s/n):',False)
@@ -95,7 +95,7 @@ while play:
     autoaloc = input("").strip().upper()
     if 'S' == autoaloc:
         #=====ALOCA AUTOMATICAMENTE===========================================
-        mapa_player = aloca_navios_para_cpu(mapa_player,lista_de_blocos(player))
+        mapa_player = aloca_navios(mapa_player,lista_de_blocos(player))
     else:
         #====PLAYER ALOCA MANUALMENTE=========================================
         mapa_player =aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
