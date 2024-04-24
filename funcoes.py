@@ -221,18 +221,23 @@ def printa_situacao_celula(elem,jogador):
         elif elem == 'N':
             print('   ',end="")
         elif elem == 'A':
-            print('{0}███{1}'.format(CORES['blue'],CORES['reset']),end="")
+
+            print('{0}▓▓▓{1}'.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}███{1}'.format(CORES['red'],CORES['reset']),end="")
+
+            print('{0}▌▌▌{1}'.format(CORES['red'],CORES['reset']),end="")
     else:
         if elem == ' ':
             print('   ',end="")
         elif elem == 'N':
+
             print('{0}███{1}'.format(CORES['green'],CORES['reset']),end="")
         elif elem == 'A':
-            print('{0}███{1}'.format(CORES['blue'],CORES['reset']),end="")
+
+            print('{0}▓▓▓{1}'.format(CORES['blue'],CORES['reset']),end="")
         elif elem == 'D':
-            print('{0}███{1}'.format(CORES['red'],CORES['reset']),end="")
+
+            print('{0}▌▌▌{1}'.format(CORES['red'],CORES['reset']),end="")
     return 
 
 #Printa uma string colorida
