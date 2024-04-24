@@ -40,7 +40,7 @@ def ja_foi_atacado(col,linha,mapa):
     else:
         return False
 
-#Aloca nas posições correta da cpu, no mapa.
+#Aloca nas posições correta da cpu, no mapa
 def aloca_navios(mapa,lista):
     for bloco in lista:
         saida = []
