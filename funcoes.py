@@ -41,7 +41,7 @@ def ja_foi_atacado(col,linha,mapa):
         return False
 
 #Aloca nas posições correta da cpu, no mapa.
-def aloca_navios_para_cpu(mapa,lista):
+def aloca_navios(mapa,lista):
     for bloco in lista:
         saida = []
         linha = random.randint(0,len(mapa)-1)
