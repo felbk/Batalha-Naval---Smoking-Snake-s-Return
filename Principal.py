@@ -98,81 +98,96 @@ while play:
     colorir('yellow',"\n gostaria de alocar seus navios automaticamente? (s ou n):", False)
     autoaloc = input("").strip().upper()
     if 'S' == autoaloc:
+        #=====ALOCA AUTOMATICAMENTE===========================================
         mapa_player = aloca_navios_para_cpu(mapa_player,lista_de_blocos(player))
     else:
+        #====PLAYER ALOCA MANUALMENTE=========================================
         mapa_player =aloca_navios_para_player(mapa_player,lista_de_blocos(player),mapa_cpu,cpu,player)
     time.sleep(2 *t)
+
+    #=====EXIBE O JOGO========================================================
     mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
     colorir('green','\n!! {} CHEGOU AO CAMPO DE BATALHA !!\n '.format(player.upper()),True)
     time.sleep(0.5 *t)
+
+    #=====FRASE DE EFEITO====================================================
     colorir("green",frase_de_efeito[player],True)
     time.sleep(1.5 *t)
     
+    #=====ESCOLHE QUEM COMEÇA A JOGAR========================================
     quemjoga = random.randint(0,1)
     sorteador = [cpu,player]
     sorteado = sorteador[quemjoga]
     colorir("red","\n{} começa atacando:\n".format(sorteado),True)
     time.sleep(1*t)
 
+    #=====SEQUÊNCIA DE ATAQUES ENQUANTO NÃO HOUVER PERDEDOR==================
     while not foi_derrotado(mapa_cpu) and not foi_derrotado(mapa_player):
+
+        #=====VEZ DA CPU====================================================
         if quemjoga == 0:
             colorir('red','COMPUTADOR ESTÁ ATACANDO..',True)
             time.sleep(1.5*t)
 
-            #cpu ataca
+            #====ATAQUE ALEATÓRIO DA CPU====================================
             lsort = random.randint(0,len(mapa_player)-1)
             csort = random.randint(0,len(mapa_player)-1)
             while ja_foi_atacado(csort,lsort,mapa_player):
                 lsort = random.randint(0,len(mapa_player)-1)
                 csort = random.randint(0,len(mapa_player)-1)
-
             reg = registra_ataque(csort,lsort,mapa_player)
             mapa_player = reg[0]
             retorno = reg[1]
             time.sleep(0.5 *t)
-
             quemjoga = 1
-            
+        
+        #====VEZ DO JOGADOR=================================================
         else:
-             #player ataca
-            # insere valores de linha coluna  COM VERIFICAÇÃO
+
+            #=====JOGADOR ESCOLHE ATAQUE====================================
             colorir('yellow',"\nSua vez de atacar!",True)
             mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
             linha = input_valida_linha()
-
             coluna = input_valida_coluna()
-
+            #====VERIFICA SE JÁ NÃO FOI ATACADO=============================
             while ja_foi_atacado(coluna,linha,mapa_cpu):
-                # insere valores de linha coluna  COM 
                 colorir('red','\n Ja foi atacado, insira outros valores:',True)
                 linha = input_valida_linha()
-
                 coluna = input_valida_coluna()
+            #=====REGISTRA O ATAQUE=========================================
             reg = registra_ataque(coluna,linha,mapa_cpu)
             mapa_cpu = reg[0]
             retorno = reg[1]
             time.sleep(0.5 *t)
-        
             quemjoga= 0
+        
+        #====EXIBE O MAPA====================================================
         time.sleep(0.6*t)
         mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
         time.sleep(0.6*t)
+
+        #====ANALISA RESULTADO DO ATAQUE=====================================
+
         if retorno == "A":
+            #====EXIBE QUE ATINGIU ÁGUA======================================
             boom.stop()
             agua.play()
             colorir('blue','ÁGUA !! Foi por pouco... \n',True)
             time.sleep(3*t)
         else:
+            #====EXIBE QUE ATINGIU NAVIO=====================================
             agua.stop()
             boom.play()
             colorir('red','BOOM !! ACERTOU EM CHEIO!! \n',True)
             time.sleep(3*t)
 
+    #=======ANUNCIA SE O JOGADOR VENCEU OU NÃO================================================
     if foi_derrotado(mapa_cpu):
         colorir('green',"\nVocê ganhou!!!\n",True)
     else:
         colorir('black','\nVocê perdeu...\n',True)
     
+    #=======PERGUNTA SE QUER JOGAR NOVAMENTE===============================================
     colorir('yellow','\n Deseja jogar novamente (s ou n):\n',False)
     pergunta = input("").strip().upper()
     if 'N' in pergunta:
