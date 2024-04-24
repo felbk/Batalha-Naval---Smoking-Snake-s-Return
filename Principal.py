@@ -1,12 +1,12 @@
 
-#========IMPORTA BASE DE DADOS, FUNÇÕES E BIBLIOTECAS AUXILIARES================
+#=======IMPORTA BASE DE DADOS, FUNÇÕES E BIBLIOTECAS AUXILIARES================
 from Basededados import* 
 from funcoes import *
 import pygame # para tocar musica
 import random 
 import time
 
-#========INICIA VARIAVEIS E CARREGA MÚSICA=======================
+#========INICIA VARIAVEIS E CARREGA MÚSICA======================================
 play = True
 t = 0.4
 pygame.mixer.init()
@@ -19,31 +19,32 @@ agua = pygame.mixer.Sound("splash.mp3")
 agua.set_volume(2)
 
 
-
+#=========LOOP ENQUANTO JOGADOR QUISER JOGAR=====================================
 while play:
     
     
    
     
-    #cabeçalho de inicio
+    #=====PRINTA NOME DO JOGO============================================
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
     tituloinicio= '╔'+"═"*len(tituloinicio)+'╗'+'\n'+'║'+tituloinicio + '║'+"\n"+'╚'+"═"*len(tituloinicio)+'╝'
     colorir("green","\n \n"+tituloinicio + "\n",True)
 
     
-    # Cpu escolhe pais e aloca frotas 
+    #=====CPU CRIA MAPA E ALOCA NAVIOS=================================== 
     mapa_cpu = cria_mapa(10) 
     cpu = sorteia_cpu(PAISES)
     mapa_cpu = aloca_navios_para_cpu(mapa_cpu,lista_de_blocos(cpu))
-    
-    colorir('magenta','Esta apressado? Gostaria de acelerar as animações?(s/n):',False)
+
+    #=====OPÇÃO PARA ACELERAR AS ANIMAÇÕES ==============================
+    colorir('magenta','Está apressado? Gostaria de acelerar as animações?(s/n):',False)
     aceleratempo = input('').upper().strip()
     if "S" in aceleratempo:
         t=0.2
     else:
         t=1
 
-    # Texto de carregamento
+    #======TEXTO DE CARREGAMENTO===========================================
     time.sleep(1 *t)
     print('\nIniciando jogo\n ')
     time.sleep(1 *t)
@@ -60,13 +61,11 @@ while play:
     colorir('green','!! {} JÁ ESTÁ NO CAMPO DE BATALHA !!\n '.format(cpu.upper()),True)
     time.sleep(0.5 *t)
     colorir("green",frase_de_efeito[cpu],True)
-    time.sleep(1.5 *t)
-
-    #Jogador escolhe País 
-    time.sleep(0.5 *t)
+    time.sleep(2 *t)
     colorir("yellow","\n|Analisando as Frotas disponíveis pelo mundo|\n ",True)
     time.sleep(1.5 *t)
-         #printa Tabela de paises
+
+    #======EXIBE OPÇÕES DE PAISES============================================
     for inf,val in PAISES.items():
         colorir('cyan',inf+':',True)
         time.sleep(0.2 *t)
@@ -74,9 +73,11 @@ while play:
             colorir('black',"     "+inf2+': '+str(val2),True)
             time.sleep(0.3 *t)
     print("\n ")
-    #Escolha do país
+
+    #=======JOGADOR ESCOLHE SEU PAÍS==========================================
     paisIn = input("Escolha seu país: ")
-    #Validação do país
+
+    #======VALIDA PAIS ESCOLHIDO==============================================
     while verificarPais(paisIn)==False :  
         colorir('red','O valor inserido não está na lista de países, tente novamente:',True)
         paisIn = input("")
@@ -85,15 +86,15 @@ while play:
     if player != cpu:
         colorir('cyan','\n Você escolheu {}, hora de alocar seus navios!! \n'.format(player),True)
     else:
-        colorir('cyan','\n Você também escolheu {}? Ok, teremos uma guerra civil hora de alocar seus navios!! \n'.format(player),True)
-    #Cria e exibe mapa.
+        colorir('cyan','\n Você também escolheu {}? Ok, teremos uma guerra civil, hora de alocar seus navios!! \n'.format(player),True)
+    #======CRIA E EXIBE O MAPA================================================
     mapa_player = cria_mapa(10)
    
     time.sleep(0.6 *t)
     
     mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
 
-    #Alocar navios - 
+    #======OPÇÃO DE ALOCAR NAVIOS AUTOMATICAMENTE=============================
     colorir('yellow',"\n gostaria de alocar seus navios automaticamente? (s ou n):", False)
     autoaloc = input("").strip().upper()
     if 'S' == autoaloc:
