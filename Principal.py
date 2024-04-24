@@ -18,13 +18,9 @@ boom.set_volume(2)
 agua = pygame.mixer.Sound("splash.mp3")
 agua.set_volume(2)
 
-
 #=========LOOP ENQUANTO JOGADOR QUISER JOGAR=====================================
 while play:
-    
-    
-   
-    
+
     #=====PRINTA NOME DO JOGO============================================
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
     tituloinicio= '╔'+"═"*len(tituloinicio)+'╗'+'\n'+'║'+tituloinicio + '║'+"\n"+'╚'+"═"*len(tituloinicio)+'╝'
@@ -192,6 +188,5 @@ while play:
     pergunta = input("").strip().upper()
     if 'N' in pergunta:
         play = False
-
     pygame.mixer.music.stop()
     
