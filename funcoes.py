@@ -40,7 +40,7 @@ def ja_foi_atacado(col,linha,mapa):
     else:
         return False
 
-#Aloca nas na posiç~eos correta da cpu, no tabuleiro.
+#Aloca nas posições correta da cpu, no mapa.
 def aloca_navios_para_cpu(mapa,lista):
     for bloco in lista:
         saida = []
@@ -70,7 +70,7 @@ def aloca_navios_para_cpu(mapa,lista):
         mapa = saida
     return mapa
 
-
+#player aloca navio manualmente
 def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
     for bloco in lista:
         saida = []
@@ -86,7 +86,7 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
             linha = input_valida_linha()
             coluna = input_valida_coluna()
             orientacao = input_valida_orientacao()
-       
+       #registra alocação
         for i in range(len(mapa)):
             linhasaida = []
             linha_em_analise = mapa[i]
@@ -107,6 +107,7 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
         mostra_jogo(mapacpu,mapa,cpu,player,len(mapa))
     return mapa
 
+# validação da linha
 def input_valida_linha():
     linha = input("Informe o número: ").upper().strip()
     if linha not in numeros:
@@ -124,6 +125,7 @@ def input_valida_linha():
             invalido = False
     return linha
 
+#validação da coluna
 def input_valida_coluna():
     coluna = input("Informe a letra: ").strip().upper()
     if coluna not in ALFABETO[:10]:
@@ -141,6 +143,7 @@ def input_valida_coluna():
             invalido = False
     return coluna
 
+#validação da orientação
 def input_valida_orientacao():
     orient = input("Digite a orientação (v (vertical) ou h (horizontal)): ").upper().strip()
     if orient not in ['H','V']: 
@@ -262,7 +265,7 @@ def formatarPais(texto):
         if texto in lista:
             return pais
 
-
+#exibir situação atual do jogo
 def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
     texto=" COMPUTADOR - "+cpu
     colorir('red',texto,False)
