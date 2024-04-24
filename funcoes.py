@@ -78,10 +78,7 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
         # insere valores de linha coluna e orientação COM VERIFICAÇÃO
         linha = input_valida_linha()
 
-        coluna = ALFABETO.find(input("Informe a letra: ").upper())
-        while not coluna < len(mapa):
-            colorir("red","Coluna inválida, digite a letra novamente: ",False)
-            coluna = ALFABETO.find(input("").upper())
+        coluna = input_valida_coluna()
 
         orientacao = input("Digite a orientação (v (vertical) ou h (horizontal))").lower()
         while orientacao not in ['v','h']:
@@ -95,10 +92,7 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
              # insere valores de linha coluna e orientação COM VERIFICAÇÃO
             linha = input_valida_linha()
 
-            coluna = ALFABETO.find(input("Informe a letra: ").upper())
-            while not coluna < len(mapa):
-                colorir("red","Coluna inválida, digite a letra novamente: ",False)
-                coluna = ALFABETO.find(input("").upper())
+            coluna = input_valida_coluna()
 
             orientacao = input("Digite a orientação (v (vertical) ou h (horizontal))").lower()
             while orientacao not in ['v','h']:
@@ -127,7 +121,7 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
     return mapa
 
 def input_valida_linha():
-    linha = input("Informe o número: ")
+    linha = input("Informe o número: ").upper().strip()
     if linha not in numeros:
         invalido= True
     else:
@@ -143,7 +137,25 @@ def input_valida_linha():
             invalido = False
     return linha
 
-   
+def input_valida_coluna():
+    coluna = input("Informe a letra: ").strip().upper()
+    if coluna not in ALFABETO[:10]:
+        invalido= True
+    else:
+        coluna = ALFABETO.find(coluna)
+        invalido = False
+    while invalido:
+        colorir("red","Coluna inválida, digite a letra novamente: ",False)
+        coluna = input("").upper().strip()
+        if coluna not in ALFABETO[:10]:
+            invalido= True
+        else:
+            coluna = ALFABETO.find(coluna)
+            invalido = False
+    return coluna
+
+
+
     
     
 
@@ -305,4 +317,4 @@ def mostra_jogo(mapacpu,mapaplayer,cpu,player,n):
     return
 
 
-
+input_valida_coluna()
