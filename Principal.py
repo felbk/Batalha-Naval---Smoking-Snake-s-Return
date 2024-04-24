@@ -1,17 +1,29 @@
 
-from Basededados import* #Importa variaveis fixas da base de dados
+#========IMPORTA BASE DE DADOS, FUNÇÕES E BIBLIOTECAS AUXILIARES================
+from Basededados import* 
 from funcoes import *
 import pygame # para tocar musica
 import random 
-
 import time
+
+#========INICIA VARIAVEIS E CARREGA MÚSICA=======================
 play = True
 t = 0.4
 pygame.mixer.init()
 pygame.mixer.music.load('mp3.mp3')
+pygame.mixer.music.set_volume(0.1)
+pygame.mixer.music.play(-1)
+boom = pygame.mixer.Sound('boom.mp3')
+boom.set_volume(2)
+agua = pygame.mixer.Sound("splash.mp3")
+agua.set_volume(2)
+
+
 
 while play:
-    pygame.mixer.music.play(15)
+    
+    
+   
     
     #cabeçalho de inicio
     tituloinicio= "!!!!Batalha Naval - Smoking Snake's Return!!!!"
@@ -27,7 +39,7 @@ while play:
     colorir('magenta','Esta apressado? Gostaria de acelerar as animações?(s/n):',False)
     aceleratempo = input('').upper().strip()
     if "S" in aceleratempo:
-        t=0.1
+        t=0.2
     else:
         t=1
 
@@ -160,9 +172,16 @@ while play:
         mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
         time.sleep(0.6*t)
         if retorno == "A":
+            boom.stop()
+            agua.play()
             colorir('blue','ÁGUA !! Foi por pouco... \n',True)
+            time.sleep(3*t)
         else:
+            agua.stop()
+            boom.play()
             colorir('red','BOOM !! ACERTOU EM CHEIO!! \n',True)
+            time.sleep(3*t)
+
     if foi_derrotado(mapa_cpu):
         colorir('green',"\nVocê ganhou!!!\n",True)
     else:
