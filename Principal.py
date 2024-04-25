@@ -11,12 +11,12 @@ play = True
 t = 0.4
 pygame.mixer.init()
 pygame.mixer.music.load('mp3.mp3')
-pygame.mixer.music.set_volume(0.1)
+pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1)
 boom = pygame.mixer.Sound('boom.mp3')
-boom.set_volume(0.5)
+boom.set_volume(1)
 agua = pygame.mixer.Sound("splash.mp3")
-agua.set_volume(0.5)
+agua.set_volume(1)
 
 #=========LOOP ENQUANTO JOGADOR QUISER JOGAR=====================================
 while play:
