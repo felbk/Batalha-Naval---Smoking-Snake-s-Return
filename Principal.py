@@ -143,8 +143,9 @@ while play:
             #=====JOGADOR ESCOLHE ATAQUE====================================
             colorir('yellow',"\nSua vez de atacar!",True)
             mostra_jogo(mapa_cpu,mapa_player,cpu,player,10)
-            linha = input_valida_linha()
             coluna = input_valida_coluna()
+            linha = input_valida_linha()
+            
             #====VERIFICA SE JÁ NÃO FOI ATACADO=============================
             while ja_foi_atacado(coluna,linha,mapa_cpu):
                 colorir('red','\n Ja foi atacado, insira outros valores:',True)

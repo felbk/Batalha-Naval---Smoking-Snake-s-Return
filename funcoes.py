@@ -76,15 +76,15 @@ def aloca_navios_para_player(mapa,lista,mapacpu,cpu,player):
         saida = []
         colorir('cyan','\n Alocando navio de tamanho {}\n'.format(bloco),True)
         # insere valores de linha coluna e orientação COM VERIFICAÇÃO
-        linha = input_valida_linha()
         coluna = input_valida_coluna()
+        linha = input_valida_linha()
         orientacao = input_valida_orientacao()
         #analisa se pode alocar
         while posicao_suporta(mapa,bloco,linha,coluna,orientacao) != True:
             colorir('red',"Não foi possível alocar nessa posição, tente novamente:",True)
              # insere valores de linha coluna e orientação COM VERIFICAÇÃO
-            linha = input_valida_linha()
             coluna = input_valida_coluna()
+            linha = input_valida_linha()
             orientacao = input_valida_orientacao()
        #registra alocação
         for i in range(len(mapa)):
